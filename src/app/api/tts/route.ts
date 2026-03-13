@@ -2,6 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "edge";
 
+/* ── Rate limiting (per-isolate, in-memory) ───────────────── */
+
+const rateLimitMap = new Map<string, number[]>();
+const RATE_LIMIT_WINDOW = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 20; // max requests per window per IP
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(ip) ?? [];
+  const recent = timestamps.filter((t) => t > now - RATE_LIMIT_WINDOW);
+  if (recent.length >= RATE_LIMIT_MAX) return false;
+  recent.push(now);
+  rateLimitMap.set(ip, recent);
+  if (rateLimitMap.size > 1000) {
+    for (const [key, ts] of rateLimitMap) {
+      if (ts.every((t) => t < now - RATE_LIMIT_WINDOW)) rateLimitMap.delete(key);
+    }
+  }
+  return true;
+}
+
 /* ── Types ────────────────────────────────────────────────── */
 
 interface TTSRequestBody {
@@ -38,6 +59,14 @@ function validate(body: unknown): { data?: TTSRequestBody; error?: string } {
 /* ── POST handler ────────────────────────────────────────── */
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded. Please wait a moment." },
+      { status: 429, headers: { "Retry-After": "60" } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();

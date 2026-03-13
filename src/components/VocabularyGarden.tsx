@@ -7,7 +7,41 @@ import { useXP } from "@/hooks/useXP";
 import { useStreak } from "@/hooks/useStreak";
 import { CardState, Word, AppMode } from "@/types";
 import { cn } from "@/lib/utils";
+import { trackQuest } from "@/hooks/useQuests";
 import AudioButton from "./AudioButton";
+
+/* ── Garden watering streak tracker ─────────────────── */
+
+const GARDEN_WATER_KEY = "davar-garden-water-streak";
+
+interface GardenWaterData {
+  lastWaterDate: string;
+  streak: number;
+}
+
+function recordGardenWater(): void {
+  if (typeof window === "undefined") return;
+  const today = new Date().toISOString().split("T")[0];
+  try {
+    const raw = localStorage.getItem(GARDEN_WATER_KEY);
+    const data: GardenWaterData = raw ? JSON.parse(raw) : { lastWaterDate: "", streak: 0 };
+
+    if (data.lastWaterDate === today) return; // Already watered today
+
+    // Check if yesterday was watered (streak continues)
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split("T")[0];
+
+    const newStreak = data.lastWaterDate === yesterdayStr ? data.streak + 1 : 1;
+    localStorage.setItem(
+      GARDEN_WATER_KEY,
+      JSON.stringify({ lastWaterDate: today, streak: newStreak })
+    );
+  } catch {
+    // localStorage unavailable
+  }
+}
 
 /* ── Plant growth stages ─────────────────────────────── */
 
@@ -131,6 +165,8 @@ export default function VocabularyGarden({
       recordReview(plant.word.id, 3);
       recordStudy();
       awardXP("garden_water");
+      trackQuest("water-plants");
+      recordGardenWater();
       setWaterAnimation(plant.word.id);
       setTimeout(() => setWaterAnimation(null), 1000);
       setSelectedPlant(null);
@@ -361,7 +397,7 @@ export default function VocabularyGarden({
                     onClick={() => handleWater(selectedPlant)}
                     className="flex-1 px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-medium transition-colors"
                   >
-                    {"\uD83D\uDCA7"} Water (+5 XP)
+                    {"\uD83D\uDCA7"} Water (+15 XP)
                   </button>
                 )}
                 <button

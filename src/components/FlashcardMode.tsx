@@ -6,10 +6,41 @@ import { useVocabulary } from "@/hooks/useVocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { useStreak } from "@/hooks/useStreak";
 import { useXP } from "@/hooks/useXP";
+import { trackQuest } from "@/hooks/useQuests";
+import { cn } from "@/lib/utils";
 import Flashcard from "./Flashcard";
 import BulkMarkKnown from "./BulkMarkKnown";
 import SessionComplete, { SessionStats } from "./SessionComplete";
 import { AppMode } from "@/types";
+
+type LevelFilter = "all" | "A1" | "A2" | "B1";
+
+const LEVEL_PILLS: { value: LevelFilter; label: string; activeClass: string }[] = [
+  { value: "all", label: "All", activeClass: "bg-accent/10 text-accent border-accent/30" },
+  { value: "A1", label: "Basics", activeClass: "bg-accent-green/10 text-accent-green border-accent-green/30" },
+  { value: "A2", label: "Growing", activeClass: "bg-amber-500/10 text-amber-400 border-amber-500/30" },
+  { value: "B1", label: "Challenging", activeClass: "bg-accent-blue/10 text-accent-blue border-accent-blue/30" },
+];
+
+function getInitialLevelFilter(): LevelFilter {
+  if (typeof window === "undefined") return "all";
+  // Check if dashboard set a specific level filter
+  const stored = localStorage.getItem("davar-level-filter");
+  if (stored) {
+    localStorage.removeItem("davar-level-filter");
+    if (stored === "A1" || stored === "A2" || stored === "B1") return stored;
+  }
+  // Auto-suggest from placement test
+  try {
+    const raw = localStorage.getItem("davar-placement");
+    if (raw) {
+      const placement = JSON.parse(raw);
+      if (placement.level === "complete-beginner" || placement.level === "beginner") return "A1";
+      if (placement.level === "intermediate") return "A2";
+    }
+  } catch { /* ignore */ }
+  return "all";
+}
 
 export default function FlashcardMode({ onNavigate }: { onNavigate?: (mode: AppMode) => void }) {
   const { allWords, categories } = useVocabulary();
@@ -21,6 +52,7 @@ export default function FlashcardMode({ onNavigate }: { onNavigate?: (mode: AppM
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedLevel, setSelectedLevel] = useState<LevelFilter>(getInitialLevelFilter);
   const [showWeakOnly, setShowWeakOnly] = useState(false);
   const [cardKey, setCardKey] = useState(0);
   const [showBulkMark, setShowBulkMark] = useState(false);
@@ -44,11 +76,14 @@ export default function FlashcardMode({ onNavigate }: { onNavigate?: (mode: AppM
     if (selectedCategory !== "all") {
       words = words.filter((w) => w.category === selectedCategory);
     }
+    if (selectedLevel !== "all") {
+      words = words.filter((w) => w.level === selectedLevel);
+    }
     if (showWeakOnly) {
       words = words.filter((w) => weakWordIds.has(w.id));
     }
     return words;
-  }, [allWords, selectedCategory, showWeakOnly, weakWordIds]);
+  }, [allWords, selectedCategory, selectedLevel, showWeakOnly, weakWordIds]);
 
   const filteredDue = useMemo(() => {
     const filteredIds = new Set(filteredWords.map((w) => w.id));
@@ -68,6 +103,7 @@ export default function FlashcardMode({ onNavigate }: { onNavigate?: (mode: AppM
       recordReview(currentWordId, quality);
       recordStudy();
       awardXP("flashcard_review");
+      trackQuest("review-flashcards");
       sessionXPRef.current += 5;
       setSessionReviewed((n) => n + 1);
       setCardKey((k) => k + 1);
@@ -119,8 +155,28 @@ export default function FlashcardMode({ onNavigate }: { onNavigate?: (mode: AppM
           </span>
         </div>
 
-        {/* Category filter + Weak Words + Mark Known */}
+        {/* Level pills + Category filter + Weak Words + Mark Known */}
         <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-1">
+            {LEVEL_PILLS.map((pill) => (
+              <button
+                key={pill.value}
+                onClick={() => {
+                  setSelectedLevel(pill.value);
+                  setCurrentIndex(0);
+                  setCardKey((k) => k + 1);
+                }}
+                className={cn(
+                  "px-2.5 py-1 rounded-full text-xs font-medium border transition-colors",
+                  selectedLevel === pill.value
+                    ? pill.activeClass
+                    : "bg-bg-secondary text-text-muted border-transparent hover:border-border"
+                )}
+              >
+                {pill.label}
+              </button>
+            ))}
+          </div>
           <select
             value={selectedCategory}
             onChange={(e) => {

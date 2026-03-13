@@ -9,6 +9,7 @@ import SentenceBuilder from "./SentenceBuilder";
 import ComprehensionQuiz from "./ComprehensionQuiz";
 import Flashcard from "./Flashcard";
 import { cn, stripNikud } from "@/lib/utils";
+import { trackQuest } from "@/hooks/useQuests";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useVocabulary } from "@/hooks/useVocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
@@ -137,6 +138,10 @@ export default function ReadingMode({ navigateToPassageId, onPassageConsumed }: 
     if (next === "words") {
       setDrillIndex(0);
       setCardKey((k) => k + 1);
+    }
+    // Track quest when passage lesson is fully completed
+    if (next === "complete") {
+      trackQuest("read-passage");
     }
   }, [currentStep, getNextStep, setCurrentStep]);
 

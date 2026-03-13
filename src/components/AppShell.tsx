@@ -37,6 +37,7 @@ const VocabularyGarden = dynamic(() => import("./VocabularyGarden"));
 const StoryMode = dynamic(() => import("./StoryMode"));
 const WordCollection = dynamic(() => import("./WordCollection"));
 const WeeklyLeague = dynamic(() => import("./WeeklyLeague"));
+const SentenceBuilderMode = dynamic(() => import("./SentenceBuilderMode"));
 
 /* ── Tab group definitions ───────────────────────────────────── */
 
@@ -90,6 +91,7 @@ const PRIMARY_TABS: PrimaryTab[] = [
       { mode: "alphabet", label: "Alphabet" },
       { mode: "writing", label: "Writing" },
       { mode: "grammar", label: "Grammar" },
+      { mode: "sentences", label: "Sentences" },
     ],
   },
   {
@@ -142,7 +144,7 @@ export default function AppShell() {
   const [mode, setMode] = useState<AppMode>("progress");
   const [passageId, setPassageId] = useState<string | undefined>();
   const { streak, hydrated } = useStreak();
-  const { level: xpLevel, totalXP, xpProgress } = useXP();
+  const { level: xpLevel, totalXP, xpProgress, todayXP } = useXP();
   const { user, isSignedIn, configured: authConfigured, syncStatus } = useAuthContext();
   const [placementResult, setPlacementResult, placementHydrated] =
     useLocalStorage<PlacementResult | null>("davar-placement", null);
@@ -171,6 +173,12 @@ export default function AppShell() {
     });
     setMode("alphabet");
   }, [setPlacementResult]);
+
+  // Streak-at-risk: after 6 PM, no XP earned today, active streak
+  const isStreakAtRisk = useMemo(() => {
+    const hour = new Date().getHours();
+    return hour >= 18 && todayXP === 0 && streak.current > 0;
+  }, [todayXP, streak.current]);
 
   const activeGroup = useMemo(() => getGroup(mode), [mode]);
   const activeTab = useMemo(
@@ -257,11 +265,14 @@ export default function AppShell() {
               )}
 
               {hydrated && streak.current > 0 && (
-                <div className="flex items-center gap-1 text-sm shrink-0">
+                <div className="flex items-center gap-1 text-sm shrink-0 relative">
                   <span className="text-base">{"\uD83D\uDD25"}</span>
                   <span className="text-accent-yellow font-semibold">
                     {streak.current}
                   </span>
+                  {isStreakAtRisk && (
+                    <span className="absolute -top-0.5 -right-1.5 w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                  )}
                 </div>
               )}
 
@@ -357,7 +368,7 @@ export default function AppShell() {
               <>
                 <WordSpotlight />
                 <div className="mt-6" />
-                <ProgressDashboard />
+                <ProgressDashboard onNavigate={navigateTo} />
                 {/* Quick-access cards */}
                 <div className="mt-6">
                   <QuickActions onNavigate={navigateTo} />
@@ -377,7 +388,8 @@ export default function AppShell() {
             {/* Learn group */}
             {mode === "alphabet" && <AlphabetMode />}
             {mode === "writing" && <WritingPractice />}
-            {mode === "grammar" && <GrammarMode />}
+            {mode === "grammar" && <GrammarMode onNavigate={navigateTo} />}
+            {mode === "sentences" && <SentenceBuilderMode onNavigate={navigateTo} />}
 
             {/* Practice group */}
             {mode === "flashcards" && (
@@ -485,6 +497,10 @@ function CrossModeSuggestions({
     grammar: [
       { label: "Practice vocabulary", mode: "flashcards", desc: "See these patterns in action" },
       { label: "Read passages", mode: "reading", desc: "Find grammar in real text" },
+    ],
+    sentences: [
+      { label: "Learn grammar", mode: "grammar", desc: "Understand the patterns you built" },
+      { label: "Read passages", mode: "reading", desc: "See sentences in full context" },
     ],
     matching: [
       { label: "Try cloze", mode: "cloze", desc: "Fill in the blanks from passages" },

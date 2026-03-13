@@ -9,8 +9,93 @@ import { prompt, PROMPTS, hasAIConsent } from "@/lib/ai";
 import AIConsentDialog from "./AIConsentDialog";
 import AudioButton from "./AudioButton";
 import { cn, shuffle } from "@/lib/utils";
+import { AppMode } from "@/types";
 
 type GrammarTab = "conjugation" | "practice" | "trainer" | "adjectives" | "lessons";
+
+/* ── Grammar → Story suggestion mapping ──────────────────── */
+
+interface StorySuggestion {
+  storyTitle: string;
+  chapterTitle: string;
+  description: string;
+}
+
+/** Map lesson IDs / grammar contexts to a relevant story */
+function getStorySuggestion(context: {
+  tab: GrammarTab;
+  lessonId?: string | null;
+  tense?: string;
+}): StorySuggestion {
+  const { tab, lessonId, tense } = context;
+
+  // Lessons about basic vocabulary / pronouns → "The Market Adventure" (beginner)
+  if (
+    lessonId === "pronouns" ||
+    lessonId === "definite-article" ||
+    lessonId === "question-words" ||
+    lessonId === "numbers-intro" ||
+    lessonId === "prepositions" ||
+    lessonId === "gender-nouns" ||
+    lessonId === "plurals"
+  ) {
+    return {
+      storyTitle: "The Market Adventure",
+      chapterTitle: "A New Morning",
+      description: "uses basic vocabulary and greetings in context",
+    };
+  }
+
+  // Lessons about past tense / conjugation → "University Days" (intermediate)
+  if (
+    lessonId === "present-tense" ||
+    lessonId === "binyanim-overview" ||
+    lessonId === "negation" ||
+    lessonId === "direct-object-et" ||
+    tab === "practice" ||
+    (tab === "conjugation" && tense === "past")
+  ) {
+    return {
+      storyTitle: "University Days",
+      chapterTitle: "The First Day",
+      description: "uses past tense and verb conjugation in context",
+    };
+  }
+
+  // Lessons about imperatives / commands → "Cafe Conversations" (dialogue)
+  if (lessonId === "imperative" || lessonId === "modals") {
+    return {
+      storyTitle: "Caf\u00E9 Conversations",
+      chapterTitle: "The First Order",
+      description: "features dialogue with commands and requests",
+    };
+  }
+
+  // Lessons about relative clauses / conditionals → "The Job Interview" (advanced)
+  if (lessonId === "relative-clauses" || lessonId === "conditionals") {
+    return {
+      storyTitle: "The Job Interview",
+      chapterTitle: "Preparing",
+      description: "uses complex grammar in realistic scenarios",
+    };
+  }
+
+  // Trainer / adjectives → University Days (intermediate grammar-heavy)
+  if (tab === "trainer" || tab === "adjectives" || lessonId === "adjectives" || lessonId === "possessives" || lessonId === "construct-state") {
+    return {
+      storyTitle: "University Days",
+      chapterTitle: "The First Lecture",
+      description: "has rich descriptive language and adjective use",
+    };
+  }
+
+  // Default → "Lost in Jerusalem" (intermediate)
+  return {
+    storyTitle: "Lost in Jerusalem",
+    chapterTitle: "The Old City",
+    description: "uses a mix of grammar patterns in an engaging story",
+  };
+}
 
 const ADJECTIVE_NOUNS: { label: string; form: "ms" | "fs" | "mp" | "fp" }[] = [
   { label: "The boy (הילד)", form: "ms" },
@@ -27,7 +112,7 @@ const ADJECTIVE_NOUNS: { label: string; form: "ms" | "fs" | "mp" | "fp" }[] = [
   { label: "The cities (הערים)", form: "fp" },
 ];
 
-export default function GrammarMode() {
+export default function GrammarMode({ onNavigate }: { onNavigate?: (mode: AppMode) => void }) {
   const [tab, setTab] = useState<GrammarTab>("conjugation");
   const [selectedPattern, setSelectedPattern] = useState(0);
   const [selectedTense, setSelectedTense] = useState<"past" | "present" | "future">("past");
@@ -713,12 +798,76 @@ export default function GrammarMode() {
                       </li>
                     ))}
                   </ul>
+                  {/* Story suggestion for this lesson */}
+                  {onNavigate && (
+                    <StorySuggestionCard
+                      suggestion={getStorySuggestion({ tab: "lessons", lessonId: lesson.id })}
+                      onNavigate={onNavigate}
+                    />
+                  )}
                 </div>
               )}
             </div>
           ))}
         </div>
       )}
+
+      {/* Story suggestion card — shown after exercises */}
+      {onNavigate && (
+        <>
+          {tab === "practice" && score.total > 0 && score.total % 5 === 0 && showResult !== null && (
+            <StorySuggestionCard
+              suggestion={getStorySuggestion({ tab: "practice", tense: currentPractice.tense })}
+              onNavigate={onNavigate}
+            />
+          )}
+          {tab === "trainer" && trainerScore.total > 0 && trainerScore.total % 5 === 0 && trainerResult !== null && (
+            <StorySuggestionCard
+              suggestion={getStorySuggestion({ tab: "trainer" })}
+              onNavigate={onNavigate}
+            />
+          )}
+          {tab === "adjectives" && adjScore.total > 0 && adjScore.total % 5 === 0 && adjResult !== null && (
+            <StorySuggestionCard
+              suggestion={getStorySuggestion({ tab: "adjectives" })}
+              onNavigate={onNavigate}
+            />
+          )}
+        </>
+      )}
     </div>
+  );
+}
+
+/* ── Story suggestion card ───────────────────────────────── */
+
+function StorySuggestionCard({
+  suggestion,
+  onNavigate,
+}: {
+  suggestion: StorySuggestion;
+  onNavigate: (mode: AppMode) => void;
+}) {
+  return (
+    <button
+      onClick={() => onNavigate("story")}
+      className="mt-4 w-full flex items-start gap-3 p-3 rounded-xl border border-accent/20 bg-accent/5 hover:bg-accent/10 transition-colors text-left group"
+    >
+      <span className="text-lg shrink-0 mt-0.5">&#128214;</span>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs font-medium text-accent">
+          Practice this in a story
+        </p>
+        <p className="text-sm text-text-secondary mt-0.5 truncate">
+          &ldquo;{suggestion.chapterTitle}&rdquo; {suggestion.description}
+        </p>
+        <p className="text-xs text-text-muted mt-0.5">
+          {suggestion.storyTitle}
+        </p>
+      </div>
+      <span className="text-accent text-sm shrink-0 self-center opacity-60 group-hover:opacity-100 transition-opacity">
+        &#8594;
+      </span>
+    </button>
   );
 }

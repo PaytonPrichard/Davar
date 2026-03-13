@@ -6,6 +6,7 @@ import { useXP } from "@/hooks/useXP";
 import { useStreak } from "@/hooks/useStreak";
 import { useDailyChallenge, DailyQuestion } from "@/hooks/useDailyChallenge";
 import { cn } from "@/lib/utils";
+import { trackQuest } from "@/hooks/useQuests";
 import AudioButton from "./AudioButton";
 
 export default function DailyChallenge() {
@@ -44,6 +45,7 @@ export default function DailyChallenge() {
       setXpAwarded(true);
       recordStudy();
       awardXP("daily_challenge_complete");
+      trackQuest("daily-challenge");
       if (state.score === state.totalQuestions) {
         awardXP("daily_challenge_perfect");
       }

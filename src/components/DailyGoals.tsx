@@ -40,19 +40,19 @@ export default function DailyGoals({
         label: "Reviews",
         current: reviewsDone,
         target: targets.reviewTarget,
-        icon: "&#128196;",
+        icon: "\uD83D\uDCC4",
       },
       {
         label: "Lines read",
         current: linesCompleted,
         target: targets.lineTarget,
-        icon: "&#128214;",
+        icon: "\uD83D\uDCD6",
       },
       {
         label: "Quizzes",
         current: quizzesTaken,
         target: targets.quizTarget,
-        icon: "&#9889;",
+        icon: "\u26A1",
       },
     ],
     [reviewsDone, linesCompleted, quizzesTaken, targets]
@@ -179,9 +179,7 @@ export default function DailyGoals({
                           done ? "text-accent-green" : "text-text-secondary"
                         }
                       >
-                        <span
-                          dangerouslySetInnerHTML={{ __html: g.icon }}
-                        />{" "}
+                        <span>{g.icon}</span>{" "}
                         {g.label}
                       </span>
                       <span className="text-text-muted text-xs">

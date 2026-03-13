@@ -6,6 +6,7 @@ import { useVocabulary } from "@/hooks/useVocabulary";
 import { useXP } from "@/hooks/useXP";
 import { useStreak } from "@/hooks/useStreak";
 import { cn, shuffle } from "@/lib/utils";
+import { trackQuest } from "@/hooks/useQuests";
 
 /* ── Types ──────────────────────────────────────────────────── */
 
@@ -129,6 +130,7 @@ export default function MatchingGame() {
       awardedRef.current = true;
       setGameComplete(true);
       setGameActive(false);
+      trackQuest("matching-game");
 
       // Calculate accuracy and XP
       const totalAttempts = matchedWordIds.size + mistakes;

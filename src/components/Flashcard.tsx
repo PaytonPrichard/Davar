@@ -30,10 +30,24 @@ export default function Flashcard({ word, onRate, onSkip, onMarkKnown }: Flashca
         aria-label={revealed ? `${word.hebrewNikud} — ${word.translation}` : `${word.hebrewNikud} — tap to reveal`}
         className={cn(
           "w-full min-h-[280px] rounded-2xl border border-border bg-bg-card p-8 cursor-pointer transition-all hover:bg-bg-card-hover",
-          "flex flex-col items-center justify-center gap-4",
+          "flex flex-col items-center justify-center gap-4 relative",
           !revealed && "hover:border-accent/50"
         )}
       >
+        {/* Level badge */}
+        {word.level && (
+          <span
+            className={cn(
+              "absolute top-3 right-3 text-[10px] px-1.5 py-0.5 rounded-full font-medium",
+              word.level === "A1" && "bg-accent-green/10 text-accent-green",
+              word.level === "A2" && "bg-amber-500/10 text-amber-400",
+              word.level === "B1" && "bg-accent-blue/10 text-accent-blue"
+            )}
+          >
+            {word.level === "A1" ? "Basics" : word.level === "A2" ? "Growing" : "Challenging"}
+          </span>
+        )}
+
         {/* Hebrew word — always visible */}
         <div className="hebrew-text text-5xl font-bold text-text-primary">
           {word.hebrewNikud}

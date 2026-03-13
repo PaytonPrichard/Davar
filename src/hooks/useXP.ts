@@ -17,6 +17,68 @@ const DEFAULT_XP_STATE: XPState = {
   dailyXP: {},
 };
 
+/* ── XP Multiplier helper ──────────────────────────────────── */
+
+/**
+ * Returns the active XP multiplier.
+ * Sources (checked in order, first match wins):
+ *  1. Saturday "Double XP" event (getDay() === 6)
+ *  2. Mystery-reward XP buff stored in localStorage
+ *     (key: "davar-xp-buff", shape: { multiplier: number, expiresAt: ISO_string })
+ *  3. Mystery-reward state multiplier stored by useMysteryRewards
+ *     (key: "davar-mystery-rewards", xpMultiplier / xpMultiplierExpires)
+ */
+export function getXPMultiplier(): number {
+  // Check Double XP Saturday
+  if (new Date().getDay() === 6) return 2;
+
+  // Check mystery reward buff (standalone key)
+  try {
+    const buff = JSON.parse(localStorage.getItem("davar-xp-buff") || "null");
+    if (buff && new Date(buff.expiresAt) > new Date()) return buff.multiplier;
+  } catch {
+    /* ignore malformed data */
+  }
+
+  // Check mystery-rewards state multiplier
+  try {
+    const mrState = JSON.parse(
+      localStorage.getItem("davar-mystery-rewards") || "null"
+    );
+    if (mrState && mrState.xpMultiplierExpires === getToday() && mrState.xpMultiplier > 1) {
+      return mrState.xpMultiplier;
+    }
+  } catch {
+    /* ignore malformed data */
+  }
+
+  return 1;
+}
+
+/**
+ * Describes *why* the multiplier is active so the UI can pick the right copy.
+ */
+export type XPMultiplierSource = "saturday" | "mystery-buff" | "mystery-reward" | null;
+
+export function getXPMultiplierSource(): XPMultiplierSource {
+  if (new Date().getDay() === 6) return "saturday";
+  try {
+    const buff = JSON.parse(localStorage.getItem("davar-xp-buff") || "null");
+    if (buff && new Date(buff.expiresAt) > new Date()) return "mystery-buff";
+  } catch {}
+  try {
+    const mrState = JSON.parse(
+      localStorage.getItem("davar-mystery-rewards") || "null"
+    );
+    if (mrState && mrState.xpMultiplierExpires === getToday() && mrState.xpMultiplier > 1) {
+      return "mystery-reward";
+    }
+  } catch {}
+  return null;
+}
+
+/* ── Hook ──────────────────────────────────────────────────── */
+
 export function useXP() {
   const [xpState, setXPState, hydrated] = useLocalStorage<XPState>(
     "davar-xp",
@@ -25,7 +87,9 @@ export function useXP() {
 
   const awardXP = useCallback(
     (action: XPAction) => {
-      const amount = XP_VALUES[action];
+      const baseAmount = XP_VALUES[action];
+      const multiplier = getXPMultiplier();
+      const amount = baseAmount * multiplier;
       const today = getToday();
 
       setXPState((prev) => {
@@ -63,6 +127,10 @@ export function useXP() {
     [xpState.totalXP]
   );
 
+  /** Current active XP multiplier (reactive-ish: recalculated on each render) */
+  const activeXPMultiplier = getXPMultiplier();
+  const xpMultiplierSource = getXPMultiplierSource();
+
   return {
     totalXP: xpState.totalXP,
     level: xpState.level,
@@ -70,5 +138,7 @@ export function useXP() {
     xpProgress,
     awardXP,
     hydrated,
+    activeXPMultiplier,
+    xpMultiplierSource,
   };
 }

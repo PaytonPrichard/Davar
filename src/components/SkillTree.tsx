@@ -96,6 +96,7 @@ const CURRICULUM: Unit[] = [
     lessons: [
       { id: "g1", title: "Verb Tables", titleHebrew: "טַבְלָאוֹת פְּעָלִים", mode: "grammar", icon: "\uD83D\uDCCB", description: "Learn Pa'al, Pi'el, Hif'il" },
       { id: "g2", title: "Conjugation Drill", titleHebrew: "תַּרְגִּיל הֲטָיָה", mode: "grammar", icon: "\uD83D\uDD04", description: "Practice verb forms" },
+      { id: "g3", title: "Sentence Building", titleHebrew: "בִּנְיַן מִשְׁפָּטִים", mode: "sentences", icon: "\uD83D\uDD24", description: "Arrange words into Hebrew sentences" },
     ],
     unlockCondition: (ctx) => ctx.wordsMastered >= 30 && ctx.linesRead >= 10,
   },

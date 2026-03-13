@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef } from "react";
-import { useXP } from "@/hooks/useXP";
+import { useXP, getXPMultiplier } from "@/hooks/useXP";
 import { useStreak } from "@/hooks/useStreak";
 import { useMysteryRewards, MysteryReward } from "@/hooks/useMysteryRewards";
 import { cn } from "@/lib/utils";
@@ -112,6 +112,7 @@ export default function SessionComplete({
   const { level, xpProgress, todayXP } = useXP();
   const { streak } = useStreak();
   const { rollReward } = useMysteryRewards();
+  const xpMultiplier = getXPMultiplier();
   const [show, setShow] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [showStreak, setShowStreak] = useState(false);
@@ -220,11 +221,18 @@ export default function SessionComplete({
             color="text-accent-green"
           />
         )}
-        <StatCard
-          label="XP Earned"
-          value={`+${stats.xpEarned}`}
-          color="text-accent-yellow"
-        />
+        <div className="relative">
+          <StatCard
+            label="XP Earned"
+            value={`+${stats.xpEarned}`}
+            color="text-accent-yellow"
+          />
+          {xpMultiplier > 1 && (
+            <span className="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-full bg-accent-yellow/20 border border-accent-yellow/40 text-accent-yellow text-[10px] font-bold">
+              {xpMultiplier}x
+            </span>
+          )}
+        </div>
         <StatCard
           label="Today"
           value={`${todayXP} XP`}

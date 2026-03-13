@@ -5,6 +5,7 @@ export interface Word {
   transliteration: string;
   translation: string;
   category: string;
+  level?: "A1" | "A2" | "B1";
 }
 
 export interface CardState {
@@ -75,7 +76,8 @@ export type AppMode =
   | "garden"
   | "story"
   | "collection"
-  | "league";
+  | "league"
+  | "sentences";
 
 export interface FuzzyMatchResult {
   status: "correct" | "close" | "incorrect";
@@ -101,7 +103,9 @@ export type XPAction =
   | "daily_challenge_correct"
   | "daily_challenge_complete"
   | "daily_challenge_perfect"
-  | "garden_water";
+  | "garden_water"
+  | "quest_bonus"
+  | "sentence_correct";
 
 export const XP_VALUES: Record<XPAction, number> = {
   flashcard_review: 5,
@@ -120,7 +124,9 @@ export const XP_VALUES: Record<XPAction, number> = {
   daily_challenge_correct: 15,
   daily_challenge_complete: 50,
   daily_challenge_perfect: 75,
-  garden_water: 5,
+  garden_water: 15,
+  quest_bonus: 25,
+  sentence_correct: 10,
 };
 
 export interface XPState {
@@ -174,7 +180,16 @@ export type AchievementCondition =
   | { type: "quizzes_complete"; threshold: number }
   | { type: "perfect_quizzes"; threshold: number }
   | { type: "daily_xp"; threshold: number }
-  | { type: "categories_mastered"; threshold: number };
+  | { type: "categories_mastered"; threshold: number }
+  | { type: "league_promotion"; threshold: number }
+  | { type: "league_tier"; threshold: string }
+  | { type: "league_rank"; threshold: number }
+  | { type: "garden_blooms"; threshold: number }
+  | { type: "garden_water_streak"; threshold: number }
+  | { type: "quests_complete"; threshold: number }
+  | { type: "quest_daily_all"; threshold: number }
+  | { type: "quest_streak"; threshold: number }
+  | { type: "sentences_built"; threshold: number };
 
 export interface AchievementState {
   unlockedIds: string[];
@@ -219,6 +234,14 @@ export const CATEGORIES = [
   "Clothing",
   "Home & House",
   "Verbs & Actions",
+  "Pronouns",
+  "Question Words",
+  "Connectors",
+  "Daily Routines",
+  "Shopping & Money",
+  "Health",
+  "Transport",
+  "Education",
 ] as const;
 
 export type BuiltinCategory = (typeof CATEGORIES)[number];

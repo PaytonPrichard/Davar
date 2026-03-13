@@ -23,7 +23,27 @@ interface AchievementContext {
   quizzesComplete: number;
   perfectQuizzes: number;
   dailyXP: number;
+  // League fields
+  leaguePromotions?: number;
+  leagueTier?: string; // "bronze" | "silver" | "gold" | "diamond"
+  leagueBestRank?: number;
+  // Garden fields
+  gardenBlooms?: number;
+  gardenWaterStreak?: number;
+  // Quest fields
+  questsComplete?: number;
+  questDailyAllComplete?: number;
+  questStreak?: number;
+  // Sentence Builder fields
+  sentencesBuilt?: number;
 }
+
+const TIER_ORDER: Record<string, number> = {
+  bronze: 1,
+  silver: 2,
+  gold: 3,
+  diamond: 4,
+};
 
 function evaluateCondition(
   achievement: Achievement,
@@ -51,6 +71,48 @@ function evaluateCondition(
       return { met: ctx.dailyXP >= condition.threshold, current: ctx.dailyXP };
     case "categories_mastered":
       return { met: false, current: 0 };
+    // League achievements
+    case "league_promotion": {
+      const val = ctx.leaguePromotions ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    case "league_tier": {
+      const currentTierNum = TIER_ORDER[ctx.leagueTier ?? "bronze"] ?? 0;
+      const targetTierNum = TIER_ORDER[condition.threshold] ?? 0;
+      return { met: currentTierNum >= targetTierNum, current: currentTierNum };
+    }
+    case "league_rank": {
+      const bestRank = ctx.leagueBestRank ?? 0;
+      // rank 1 is best, so met when bestRank <= threshold and bestRank > 0
+      return { met: bestRank > 0 && bestRank <= condition.threshold, current: bestRank > 0 ? bestRank : 0 };
+    }
+    // Garden achievements
+    case "garden_blooms": {
+      const val = ctx.gardenBlooms ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    case "garden_water_streak": {
+      const val = ctx.gardenWaterStreak ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    // Quest achievements
+    case "quests_complete": {
+      const val = ctx.questsComplete ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    case "quest_daily_all": {
+      const val = ctx.questDailyAllComplete ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    case "quest_streak": {
+      const val = ctx.questStreak ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
+    // Sentence Builder achievements
+    case "sentences_built": {
+      const val = ctx.sentencesBuilt ?? 0;
+      return { met: val >= condition.threshold, current: val };
+    }
   }
 }
 
@@ -111,14 +173,15 @@ export function useAchievements() {
     (ctx: AchievementContext): AchievementProgress[] => {
       return ACHIEVEMENTS.map((a) => {
         const unlocked = state.unlockedIds.includes(a.id);
-        const { current } = evaluateCondition(a, ctx);
+        const { met, current } = evaluateCondition(a, ctx);
         const threshold = a.condition.threshold;
+        const numericThreshold = typeof threshold === "number" ? threshold : 1;
         return {
           achievement: a,
           unlocked,
           unlockedAt: state.unlockedAt[a.id] ?? null,
           currentValue: current,
-          percent: unlocked ? 100 : Math.min(99, Math.round((current / threshold) * 100)),
+          percent: unlocked || met ? 100 : Math.min(99, Math.round((current / numericThreshold) * 100)),
         };
       });
     },

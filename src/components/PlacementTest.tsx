@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { VOCABULARY } from "@/data/vocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
@@ -24,12 +24,22 @@ type Question = MCQuestion;
 
 export type PlacementLevel = "complete-beginner" | "beginner" | "intermediate" | "advanced";
 
+export interface PlacementAnswerDetail {
+  questionIndex: number;
+  stage: number;
+  prompt: string;
+  userAnswer: string;
+  correctAnswer: string;
+  correct: boolean;
+}
+
 export interface PlacementResult {
   level: PlacementLevel;
   score: number;
   totalQuestions: number;
   stageScores: number[];
   completedAt: string;
+  answerDetails?: PlacementAnswerDetail[];
 }
 
 /* ── Static question bank ───────────────────────────────────── */
@@ -234,6 +244,8 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
   );
   const [selected, setSelected] = useState<number | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [reviewExpanded, setReviewExpanded] = useState(false);
+  const [savedToProfile, setSavedToProfile] = useState(false);
 
   const { allWords } = useVocabulary();
   const { bulkMarkKnown } = useSpacedRepetition(allWords);
@@ -267,6 +279,8 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
     return "complete-beginner";
   }, [totalCorrect, stageScores]);
 
+  const autoAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleSelect = useCallback((optionIdx: number) => {
     if (showFeedback) return;
     setSelected(optionIdx);
@@ -277,18 +291,59 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
       next[currentQ] = optionIdx;
       return next;
     });
+
+    // Auto-advance after brief feedback
+    autoAdvanceRef.current = setTimeout(() => {
+      setSelected(null);
+      setShowFeedback(false);
+      if (currentQ + 1 >= QUESTIONS.length) {
+        setPhase("results");
+      } else {
+        setCurrentQ((q) => q + 1);
+      }
+    }, 1200);
   }, [showFeedback, currentQ]);
 
-  const handleNext = useCallback(() => {
-    setSelected(null);
-    setShowFeedback(false);
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
+    };
+  }, []);
 
-    if (currentQ + 1 >= QUESTIONS.length) {
-      setPhase("results");
-    } else {
-      setCurrentQ((q) => q + 1);
-    }
-  }, [currentQ]);
+  const answerDetails = useMemo((): PlacementAnswerDetail[] => {
+    return QUESTIONS.map((q, i) => ({
+      questionIndex: i,
+      stage: q.stage,
+      prompt: q.prompt.replace(/\n/g, " "),
+      userAnswer: answers[i] !== null ? q.options[answers[i]!] : "(skipped)",
+      correctAnswer: q.options[q.correctIndex],
+      correct: answers[i] === q.correctIndex,
+    }));
+  }, [answers]);
+
+  const downloadCSV = useCallback(() => {
+    const header = "Question #,Stage,Question,Your Answer,Correct Answer,Result";
+    const rows = answerDetails.map((a) => {
+      const esc = (s: string) => `"${s.replace(/"/g, '""')}"`;
+      return [
+        a.questionIndex + 1,
+        `${STAGE_NAMES[a.stage]}`,
+        esc(a.prompt),
+        esc(a.userAnswer),
+        esc(a.correctAnswer),
+        a.correct ? "Correct" : "Wrong",
+      ].join(",");
+    });
+    const csv = [header, ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `davar-placement-results.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [answerDetails]);
 
   const handleApplyResults = useCallback(() => {
     const result: PlacementResult = {
@@ -297,6 +352,7 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
       totalQuestions: QUESTIONS.length,
       stageScores,
       completedAt: new Date().toISOString(),
+      answerDetails,
     };
 
     // Bulk mark words as known based on level
@@ -306,7 +362,7 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
     }
 
     onComplete(result);
-  }, [placementLevel, totalCorrect, stageScores, bulkMarkKnown, onComplete]);
+  }, [placementLevel, totalCorrect, stageScores, answerDetails, bulkMarkKnown, onComplete]);
 
   /* ── Intro screen ─────────────────────────────────────────── */
   /* ── Welcome screen (value-first) ─────────────────────────── */
@@ -578,6 +634,80 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
             )}
           </div>
 
+          {/* Review answers */}
+          <div className="mb-6">
+            <button
+              onClick={() => setReviewExpanded((v) => !v)}
+              className="w-full flex items-center justify-between bg-bg-card border border-border rounded-xl px-4 py-3 text-sm font-medium text-text-secondary hover:bg-bg-card-hover transition-colors"
+            >
+              <span>Review Your Answers</span>
+              <span className={cn("transition-transform", reviewExpanded && "rotate-180")}>
+                ▼
+              </span>
+            </button>
+
+            {reviewExpanded && (
+              <div className="mt-2 bg-bg-card border border-border rounded-xl overflow-hidden">
+                <div className="max-h-80 overflow-y-auto">
+                  {answerDetails.map((a, i) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        "px-4 py-3 border-b border-border last:border-b-0 text-left text-sm",
+                        a.correct ? "bg-accent-green/5" : "bg-red-500/5"
+                      )}
+                    >
+                      <div className="flex items-start gap-2">
+                        <span className={cn(
+                          "shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mt-0.5",
+                          a.correct ? "bg-accent-green/20 text-accent-green" : "bg-red-500/20 text-red-400"
+                        )}>
+                          {a.correct ? "✓" : "✗"}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-text-primary font-medium leading-snug">{a.prompt}</p>
+                          <p className="text-text-muted text-xs mt-1">
+                            Your answer: <span className={a.correct ? "text-accent-green" : "text-red-400"}>{a.userAnswer}</span>
+                            {!a.correct && (
+                              <span className="text-text-secondary"> — Correct: <span className="text-accent-green">{a.correctAnswer}</span></span>
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Download & save */}
+          <div className="flex gap-3 mb-4">
+            <button
+              onClick={downloadCSV}
+              className="flex-1 py-2.5 rounded-xl border border-border bg-bg-card hover:bg-bg-card-hover text-text-secondary text-sm font-medium transition-colors"
+            >
+              Download CSV
+            </button>
+            <button
+              onClick={() => {
+                try {
+                  localStorage.setItem("davar-placement-answers", JSON.stringify(answerDetails));
+                  setSavedToProfile(true);
+                } catch { /* quota */ }
+              }}
+              disabled={savedToProfile}
+              className={cn(
+                "flex-1 py-2.5 rounded-xl border text-sm font-medium transition-colors",
+                savedToProfile
+                  ? "border-accent-green/30 bg-accent-green/10 text-accent-green cursor-default"
+                  : "border-border bg-bg-card hover:bg-bg-card-hover text-text-secondary"
+              )}
+            >
+              {savedToProfile ? "Saved!" : "Save to Profile"}
+            </button>
+          </div>
+
           <button
             onClick={handleApplyResults}
             className="w-full py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-lg transition-colors"
@@ -680,21 +810,15 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
             })}
           </div>
 
-          {/* Feedback + Next */}
+          {/* Feedback (auto-advances) */}
           {showFeedback && (
-            <div className="mt-6 animate-[fadeIn_0.2s_ease-out]">
+            <div className="mt-4 animate-[fadeIn_0.15s_ease-out] text-center">
               <p className={cn(
-                "text-center font-medium mb-4",
+                "font-medium",
                 isCorrect ? "text-accent-green" : "text-red-400"
               )}>
-                {isCorrect ? "Correct!" : `The answer was: ${question.options[question.correctIndex]}`}
+                {isCorrect ? "Correct!" : `Answer: ${question.options[question.correctIndex]}`}
               </p>
-              <button
-                onClick={handleNext}
-                className="w-full py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold transition-colors"
-              >
-                {currentQ + 1 >= QUESTIONS.length ? "See Results" : "Next"}
-              </button>
             </div>
           )}
         </div>

@@ -11,20 +11,33 @@ import { isWordMastered } from "@/lib/sm2";
 import { PASSAGES } from "@/data/passages";
 import { PRAYERS } from "@/data/prayers";
 import DailyGoals from "./DailyGoals";
+import DailyQuests from "./DailyQuests";
 import DifficultWords from "./DifficultWords";
 import AchievementsPanel from "./AchievementsPanel";
 import PrestigePanel from "./PrestigePanel";
 import ExportImport from "./ExportImport";
 import ShareProgressCard from "./ShareProgressCard";
+import ReviewStats from "./ReviewStats";
 import { cn } from "@/lib/utils";
+import { AppMode } from "@/types";
 
-export default function ProgressDashboard() {
+interface ProgressDashboardProps {
+  onNavigate?: (mode: AppMode) => void;
+}
+
+export default function ProgressDashboard({ onNavigate }: ProgressDashboardProps) {
   const { allWords, customWords, categories } = useVocabulary();
-  const { cardStates, totalReviews, masteredCount } =
+  const { cardStates, totalReviews, masteredCount, dueCards } =
     useSpacedRepetition(allWords);
   const { streak } = useStreak();
   const { stats: quizStats } = useQuizStats();
-  const { totalXP, level: xpLevel } = useXP();
+  const { totalXP, level: xpLevel, todayXP, activeXPMultiplier, xpMultiplierSource } = useXP();
+
+  // Streak-at-risk detection: after 6 PM, no XP today, active streak
+  const streakAtRisk = useMemo(() => {
+    const hour = new Date().getHours();
+    return hour >= 18 && todayXP === 0 && streak.current > 0;
+  }, [todayXP, streak.current]);
 
   const [completedLines] = useLocalStorage<Record<string, number[]>>(
     "davar-completed-lines",
@@ -135,6 +148,32 @@ export default function ProgressDashboard() {
     return { total, mastered, reviewed };
   }, [customWords, cardStates]);
 
+  // Level-based progress
+  const levelProgress = useMemo(() => {
+    const levels: { key: "A1" | "A2" | "B1"; label: string; color: string; barColor: string; borderColor: string; bgColor: string; hoverBg: string }[] = [
+      { key: "A1", label: "Basics", color: "text-accent-green", barColor: "bg-accent-green", borderColor: "border-accent-green/20", bgColor: "bg-accent-green/5", hoverBg: "hover:bg-accent-green/10" },
+      { key: "A2", label: "Growing", color: "text-amber-400", barColor: "bg-amber-400", borderColor: "border-amber-500/20", bgColor: "bg-amber-500/5", hoverBg: "hover:bg-amber-500/10" },
+      { key: "B1", label: "Challenging", color: "text-accent-blue", barColor: "bg-accent-blue", borderColor: "border-accent-blue/20", bgColor: "bg-accent-blue/5", hoverBg: "hover:bg-accent-blue/10" },
+    ];
+    return levels.map((lvl) => {
+      const words = allWords.filter((w) => w.level === lvl.key);
+      const mastered = words.filter((w) => isWordMastered(cardStates[w.id])).length;
+      return {
+        ...lvl,
+        total: words.length,
+        mastered,
+        percent: words.length > 0 ? Math.round((mastered / words.length) * 100) : 0,
+      };
+    });
+  }, [allWords, cardStates]);
+
+  const handleLevelPractice = (levelKey: "A1" | "A2" | "B1") => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("davar-level-filter", levelKey);
+    }
+    onNavigate?.("flashcards");
+  };
+
   // Quiz average
   const quizAverage =
     quizStats.totalQuestions > 0
@@ -152,6 +191,41 @@ export default function ProgressDashboard() {
 
   return (
     <div className="flex flex-col gap-6">
+      {/* ── 2x XP Event Banner ─────────────────────────────── */}
+      {activeXPMultiplier > 1 && (
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-accent-yellow/10 border border-accent-yellow/30 text-accent-yellow">
+          <span className="text-lg">{"\u26A1"}</span>
+          <span className="text-sm font-medium">
+            {xpMultiplierSource === "saturday"
+              ? "Double XP Saturday! All XP earned today is doubled."
+              : `${activeXPMultiplier}x XP Active! Expires at end of day.`}
+          </span>
+        </div>
+      )}
+
+      {/* ── Streak-at-Risk Nudge ───────────────────────────── */}
+      {streakAtRisk && (
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-orange-500/10 border border-orange-500/30">
+          <span className="text-lg">{"\uD83D\uDD25"}</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-orange-400">
+              Don&apos;t lose your {streak.current}-day streak!
+            </p>
+            <p className="text-xs text-orange-400/70">
+              A quick review keeps it alive.
+            </p>
+          </div>
+          {onNavigate && (
+            <button
+              onClick={() => onNavigate("flashcards")}
+              className="shrink-0 px-3 py-1.5 rounded-lg bg-orange-500/15 text-orange-400 text-xs font-semibold border border-orange-500/30 hover:bg-orange-500/25 transition-colors"
+            >
+              Start a Quick Review {"\u2192"}
+            </button>
+          )}
+        </div>
+      )}
+
       {/* ── Hero stats row ─────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <HeroCard
@@ -192,12 +266,51 @@ export default function ProgressDashboard() {
         />
       </div>
 
+      {/* ── Daily Quests ───────────────────────────────────── */}
+      <DailyQuests />
+
       {/* ── Daily Goals ────────────────────────────────────── */}
       <DailyGoals
         reviewsDone={totalReviews}
         linesCompleted={Object.values(completedLines).reduce((sum, lines) => sum + lines.length, 0)}
         quizzesTaken={quizStats.quizzesTaken}
       />
+
+      {/* ── Practice by Level ────────────────────────────────── */}
+      <SectionCard title="Practice by Level" icon={"\uD83C\uDFAF"}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {levelProgress.map((lvl) => (
+            <button
+              key={lvl.key}
+              onClick={() => handleLevelPractice(lvl.key)}
+              className={cn(
+                "p-4 rounded-xl border text-left transition-all hover:scale-[1.02]",
+                lvl.borderColor, lvl.bgColor, lvl.hoverBg
+              )}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className={cn("text-sm font-semibold", lvl.color)}>
+                  {lvl.label}
+                </span>
+                <span className="text-xs text-text-muted">
+                  {lvl.mastered}/{lvl.total}
+                </span>
+              </div>
+              <div className="h-1.5 bg-bg-secondary rounded-full overflow-hidden">
+                <div
+                  className={cn("h-full rounded-full transition-all duration-500", lvl.barColor)}
+                  style={{ width: `${lvl.percent}%` }}
+                />
+              </div>
+              <span className="block text-[10px] text-text-muted mt-1.5">
+                {lvl.mastered === lvl.total && lvl.total > 0
+                  ? "All mastered!"
+                  : `${lvl.total - lvl.mastered} remaining`}
+              </span>
+            </button>
+          ))}
+        </div>
+      </SectionCard>
 
       {/* ── Vocabulary ─────────────────────────────────────── */}
       <SectionCard title="Vocabulary" icon={"\uD83C\uDFB4"}>
@@ -336,6 +449,13 @@ export default function ProgressDashboard() {
           </>
         )}
       </SectionCard>
+
+      {/* ── SRS Review Stats ─────────────────────────────────── */}
+      <ReviewStats
+        cardStates={cardStates}
+        totalWordCount={allWords.length}
+        dueCount={dueCards.length}
+      />
 
       {/* ── Prestige ─────────────────────────────────────────── */}
       <PrestigePanel />

@@ -26,6 +26,9 @@ interface LeagueState {
     promoted: boolean;
     demoted: boolean;
   };
+  // Cumulative stats for achievements
+  totalPromotions?: number;
+  bestRank?: number;
 }
 
 /* ── Constants ────────────────────────────────────────── */
@@ -200,12 +203,21 @@ export default function WeeklyLeague() {
           };
         }
 
+        // Track cumulative promotions and best rank for achievements
+        const newPromotions = (prev.totalPromotions ?? 0) + (prevResult?.promoted ? 1 : 0);
+        const prevBestRank = prev.bestRank ?? Infinity;
+        const newBestRank = prevResult
+          ? Math.min(prevBestRank, prevResult.rank)
+          : prevBestRank;
+
         return {
           weekStart: currentWeek,
           tier: newTier,
           weeklyXP: 0,
           bots: generateBots(currentWeek, newTier),
           prevResult,
+          totalPromotions: newPromotions,
+          bestRank: newBestRank === Infinity ? undefined : newBestRank,
         };
       });
     }
@@ -269,11 +281,17 @@ export default function WeeklyLeague() {
         >
           <p className="text-sm font-medium text-text-primary">
             {state.prevResult.promoted
-              ? `\uD83C\uDF89 Promoted! You finished #${state.prevResult.rank} and moved up!`
+              ? `\uD83C\uDF89 Promoted to ${TIER_INFO[state.tier].label.replace(" League", "")}! You finished #${state.prevResult.rank} last week.`
               : state.prevResult.demoted
-                ? `You finished #${state.prevResult.rank}. Dropped a tier \u2014 you'll get it next week!`
-                : `You finished #${state.prevResult.rank} in ${TIER_INFO[state.prevResult.tier].label}.`}
+                ? `\u2B07\uFE0F Demoted to ${TIER_INFO[state.tier].label.replace(" League", "")}. You finished #${state.prevResult.rank} \u2014 you'll get it next week!`
+                : `You finished #${state.prevResult.rank} in ${TIER_INFO[state.prevResult.tier].label}. Keep it up!`}
           </p>
+          <button
+            onClick={() => setState((prev) => ({ ...prev, prevResult: undefined }))}
+            className="text-xs text-text-muted hover:text-text-secondary mt-2 underline"
+          >
+            Dismiss
+          </button>
         </div>
       )}
 

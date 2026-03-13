@@ -11,6 +11,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shalom",
     translation: "hello / peace",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:todah",
@@ -19,6 +20,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "todah",
     translation: "thank you",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:bevakasha",
@@ -27,6 +29,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bevakasha",
     translation: "please / you're welcome",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:ken",
@@ -35,6 +38,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ken",
     translation: "yes",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:lo",
@@ -43,6 +47,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lo",
     translation: "no",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:slicha",
@@ -51,6 +56,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "slicha",
     translation: "excuse me",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:boker-tov",
@@ -59,6 +65,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "boker tov",
     translation: "good morning",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:erev-tov",
@@ -67,6 +74,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "erev tov",
     translation: "good evening",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:layla-tov",
@@ -75,6 +83,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "layla tov",
     translation: "good night",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:lehitraot",
@@ -83,6 +92,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehitraot",
     translation: "goodbye",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:ma-nishma",
@@ -91,6 +101,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ma nishma",
     translation: "how are you? / what's up?",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:beseder",
@@ -99,6 +110,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beseder",
     translation: "okay",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:nachon",
@@ -107,6 +119,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nachon",
     translation: "correct / right",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:rega",
@@ -115,6 +128,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "rega",
     translation: "wait / moment",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:toda-raba",
@@ -123,6 +137,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "toda raba",
     translation: "thank you very much",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:shalom-aleichem",
@@ -131,6 +146,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shalom aleichem",
     translation: "peace be upon you",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:ma-shlomcha",
@@ -139,6 +155,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ma shlomcha",
     translation: "how are you (masc)",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:ma-shlomech",
@@ -147,6 +164,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ma shlomech",
     translation: "how are you (fem)",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:yalla",
@@ -155,6 +173,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yalla",
     translation: "let's go",
     category: "Greetings & Basics",
+    level: "A1",
   },
   {
     id: "builtin:sababa",
@@ -163,6 +182,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sababa",
     translation: "great / cool",
     category: "Greetings & Basics",
+    level: "A1",
   },
 
   // ============================================================
@@ -175,6 +195,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "echat",
     translation: "one (1)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shtayim",
@@ -183,6 +204,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shtayim",
     translation: "two (2)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shalosh",
@@ -191,6 +213,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shalosh",
     translation: "three (3)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:arba",
@@ -199,6 +222,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "arba",
     translation: "four (4)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:chamesh",
@@ -207,6 +231,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chamesh",
     translation: "five (5)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shesh",
@@ -215,6 +240,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shesh",
     translation: "six (6)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:sheva",
@@ -223,6 +249,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sheva",
     translation: "seven (7)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shmone",
@@ -231,6 +258,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shmone",
     translation: "eight (8)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:tesha",
@@ -239,6 +267,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tesha",
     translation: "nine (9)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:eser",
@@ -247,6 +276,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "eser",
     translation: "ten (10)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:achat-esre",
@@ -255,6 +285,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "achat esre",
     translation: "eleven (11)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:shteim-esre",
@@ -263,6 +294,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shteim esre",
     translation: "twelve (12)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:shlosh-esre",
@@ -271,6 +303,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shlosh esre",
     translation: "thirteen (13)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:arba-esre",
@@ -279,6 +312,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "arba esre",
     translation: "fourteen (14)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:chamesh-esre",
@@ -287,6 +321,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chamesh esre",
     translation: "fifteen (15)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:esrim",
@@ -295,6 +330,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "esrim",
     translation: "twenty (20)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:shloshim",
@@ -303,6 +339,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shloshim",
     translation: "thirty (30)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:arbaim",
@@ -311,6 +348,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "arbaim",
     translation: "forty (40)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:meah",
@@ -319,6 +357,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "meah",
     translation: "one hundred (100)",
     category: "Numbers",
+    level: "A2",
   },
   {
     id: "builtin:elef",
@@ -327,6 +366,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "elef",
     translation: "one thousand (1000)",
     category: "Numbers",
+    level: "A2",
   },
 
   // ============================================================
@@ -339,6 +379,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lechem",
     translation: "bread",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:mayim",
@@ -347,6 +388,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mayim",
     translation: "water",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:kafeh",
@@ -355,6 +397,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kafeh",
     translation: "coffee",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:te",
@@ -363,6 +406,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "te",
     translation: "tea",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:chalav",
@@ -371,6 +415,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chalav",
     translation: "milk",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:bira",
@@ -379,6 +424,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bira",
     translation: "beer",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:yayin",
@@ -387,6 +433,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yayin",
     translation: "wine",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:tapuach",
@@ -395,6 +442,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tapuach",
     translation: "apple",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:bananah",
@@ -403,6 +451,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bananah",
     translation: "banana",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:agvaniya",
@@ -411,6 +460,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "agvaniya",
     translation: "tomato",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:melafefon",
@@ -419,6 +469,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "melafefon",
     translation: "cucumber",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:gvinah",
@@ -427,6 +478,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gvinah",
     translation: "cheese",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:basar",
@@ -435,6 +487,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "basar",
     translation: "meat",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:dag",
@@ -443,6 +496,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dag",
     translation: "fish",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:orez",
@@ -451,6 +505,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "orez",
     translation: "rice",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:salat",
@@ -459,6 +514,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "salat",
     translation: "salad",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:ugah",
@@ -467,6 +523,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ugah",
     translation: "cake",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:shokolad",
@@ -475,6 +532,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shokolad",
     translation: "chocolate",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:limon",
@@ -483,6 +541,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "limon",
     translation: "lemon",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:tapuz",
@@ -491,6 +550,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tapuz",
     translation: "orange (fruit)",
     category: "Food & Drink",
+    level: "A2",
   },
 
   // ============================================================
@@ -503,6 +563,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ima",
     translation: "mother",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:aba",
@@ -511,6 +572,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "aba",
     translation: "father",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:ach",
@@ -519,6 +581,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ach",
     translation: "brother",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:achot",
@@ -527,6 +590,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "achot",
     translation: "sister",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:yeled",
@@ -535,6 +599,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yeled",
     translation: "boy",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:yalda",
@@ -543,6 +608,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yalda",
     translation: "girl",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:ish",
@@ -551,6 +617,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ish",
     translation: "man",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:isha",
@@ -559,6 +626,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "isha",
     translation: "woman",
     category: "Family & People",
+    level: "A1",
   },
   {
     id: "builtin:saba",
@@ -567,6 +635,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "saba",
     translation: "grandfather",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:savta",
@@ -575,6 +644,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "savta",
     translation: "grandmother",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:ben",
@@ -583,6 +653,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ben",
     translation: "son",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:bat",
@@ -591,6 +662,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bat",
     translation: "daughter",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:chaver",
@@ -599,6 +671,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chaver",
     translation: "friend (masc)",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:chavera",
@@ -607,6 +680,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chavera",
     translation: "friend (fem)",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:mishpacha",
@@ -615,6 +689,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mishpacha",
     translation: "family",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:dod",
@@ -623,6 +698,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dod",
     translation: "uncle",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:dodah",
@@ -631,6 +707,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dodah",
     translation: "aunt",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:ben-dod",
@@ -639,6 +716,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ben dod",
     translation: "cousin (masc)",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:tinok",
@@ -647,6 +725,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tinok",
     translation: "baby",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:shachen",
@@ -655,6 +734,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shachen",
     translation: "neighbor",
     category: "Family & People",
+    level: "A2",
   },
 
   // ============================================================
@@ -667,6 +747,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "adom",
     translation: "red",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:kachol",
@@ -675,6 +756,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kachol",
     translation: "blue",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:yarok",
@@ -683,6 +765,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yarok",
     translation: "green",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:tsahov",
@@ -691,6 +774,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tsahov",
     translation: "yellow",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:lavan",
@@ -699,6 +783,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lavan",
     translation: "white",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:shachor",
@@ -707,6 +792,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shachor",
     translation: "black",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:katom",
@@ -715,6 +801,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "katom",
     translation: "orange (color)",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:varod",
@@ -723,6 +810,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "varod",
     translation: "pink",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:sagol",
@@ -731,6 +819,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sagol",
     translation: "purple",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:chum",
@@ -739,6 +828,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chum",
     translation: "brown",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:zahav",
@@ -747,6 +837,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "zahav",
     translation: "gold",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:kesef",
@@ -755,6 +846,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kesef",
     translation: "silver",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:afor",
@@ -763,6 +855,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "afor",
     translation: "gray",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:tchelet",
@@ -771,6 +864,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tchelet",
     translation: "light blue",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:turkiz",
@@ -779,6 +873,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "turkiz",
     translation: "turquoise",
     category: "Colors",
+    level: "A1",
   },
 
   // ============================================================
@@ -791,6 +886,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "rosh",
     translation: "head",
     category: "Body",
+    level: "A1",
   },
   {
     id: "builtin:yad",
@@ -799,6 +895,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yad",
     translation: "hand",
     category: "Body",
+    level: "A1",
   },
   {
     id: "builtin:regel",
@@ -807,6 +904,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "regel",
     translation: "foot / leg",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:einayim",
@@ -815,6 +913,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "einayim",
     translation: "eyes",
     category: "Body",
+    level: "A1",
   },
   {
     id: "builtin:ozen",
@@ -823,6 +922,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ozen",
     translation: "ear",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:peh",
@@ -831,6 +931,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "peh",
     translation: "mouth",
     category: "Body",
+    level: "A1",
   },
   {
     id: "builtin:af",
@@ -839,6 +940,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "af",
     translation: "nose",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:lev",
@@ -847,6 +949,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lev",
     translation: "heart",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:beten",
@@ -855,6 +958,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beten",
     translation: "stomach",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:etzba",
@@ -863,6 +967,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "etzba",
     translation: "finger",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:gav",
@@ -871,6 +976,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gav",
     translation: "back",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:shinayim",
@@ -879,6 +985,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shinayim",
     translation: "teeth",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:katef",
@@ -887,6 +994,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "katef",
     translation: "shoulder",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:berech",
@@ -895,6 +1003,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "berech",
     translation: "knee",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:tzavar",
@@ -903,6 +1012,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tzavar",
     translation: "neck",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:se'ar",
@@ -911,6 +1021,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "se'ar",
     translation: "hair",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:panim",
@@ -919,6 +1030,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "panim",
     translation: "face",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:or",
@@ -927,6 +1039,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "or",
     translation: "skin",
     category: "Body",
+    level: "A2",
   },
 
   // ============================================================
@@ -939,6 +1052,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tachana",
     translation: "station",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:sde-teufa",
@@ -947,6 +1061,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sde teufa",
     translation: "airport",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:malon",
@@ -955,6 +1070,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "malon",
     translation: "hotel",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:kvish",
@@ -963,6 +1079,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kvish",
     translation: "road",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:rechov",
@@ -971,6 +1088,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "rechov",
     translation: "street",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:ir",
@@ -979,6 +1097,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ir",
     translation: "city",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:kfar",
@@ -987,6 +1106,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kfar",
     translation: "village",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:chof",
@@ -995,6 +1115,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chof",
     translation: "beach",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:mistaada",
@@ -1003,6 +1124,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mis'ada",
     translation: "restaurant",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:chanut",
@@ -1011,6 +1133,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chanut",
     translation: "store / shop",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:bank",
@@ -1019,6 +1142,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bank",
     translation: "bank",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:beit-cholim",
@@ -1027,6 +1151,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beit cholim",
     translation: "hospital",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:beit-sefer",
@@ -1035,6 +1160,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beit sefer",
     translation: "school",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:sifriya",
@@ -1043,6 +1169,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sifriya",
     translation: "library",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:muzeon",
@@ -1051,6 +1178,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "muzeon",
     translation: "museum",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:tachanah-merkazit",
@@ -1059,6 +1187,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tachanah merkazit",
     translation: "central station",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:ramzor",
@@ -1067,6 +1196,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ramzor",
     translation: "traffic light",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:mapa",
@@ -1075,6 +1205,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mapa",
     translation: "map",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:kikar",
@@ -1083,6 +1214,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kikar",
     translation: "square / plaza",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:gan",
@@ -1091,6 +1223,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gan",
     translation: "garden / park",
     category: "Travel & Places",
+    level: "B1",
   },
 
   // ============================================================
@@ -1103,6 +1236,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "avodah",
     translation: "work",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:misrad",
@@ -1111,6 +1245,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "misrad",
     translation: "office",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:moreh",
@@ -1119,6 +1254,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "moreh",
     translation: "teacher (masc)",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:morah",
@@ -1127,6 +1263,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "morah",
     translation: "teacher (fem)",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:talmid",
@@ -1135,6 +1272,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "talmid",
     translation: "student (masc)",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:talmidah",
@@ -1143,6 +1281,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "talmidah",
     translation: "student (fem)",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:makhshev",
@@ -1151,6 +1290,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "makhshev",
     translation: "computer",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:sefer",
@@ -1159,6 +1299,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sefer",
     translation: "book",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:et",
@@ -1167,6 +1308,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "et",
     translation: "pen",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:niyar",
@@ -1175,6 +1317,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "niyar",
     translation: "paper",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:shiur",
@@ -1183,6 +1326,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shiur",
     translation: "lesson",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:mivkhan",
@@ -1191,6 +1335,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mivkhan",
     translation: "test / exam",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:chofesh",
@@ -1199,6 +1344,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chofesh",
     translation: "vacation",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:sachar",
@@ -1207,6 +1353,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sachar",
     translation: "salary",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:pgisha",
@@ -1215,6 +1362,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "pgisha",
     translation: "meeting",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:universita",
@@ -1223,6 +1371,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "universita",
     translation: "university",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:shiurei-bayit",
@@ -1231,6 +1380,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shiurei bayit",
     translation: "homework",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:boss",
@@ -1239,6 +1389,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bos",
     translation: "boss",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:email",
@@ -1247,6 +1398,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "imeil",
     translation: "email",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:proyekt",
@@ -1255,6 +1407,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "proyekt",
     translation: "project",
     category: "Work & School",
+    level: "B1",
   },
 
   // ============================================================
@@ -1267,6 +1420,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom",
     translation: "day",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:layla",
@@ -1275,6 +1429,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "layla",
     translation: "night",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:shaah",
@@ -1283,6 +1438,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shaah",
     translation: "hour",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:daka",
@@ -1291,6 +1447,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "daka",
     translation: "minute",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:shavua",
@@ -1299,6 +1456,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shavua",
     translation: "week",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:chodesh",
@@ -1307,6 +1465,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chodesh",
     translation: "month",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:shanah",
@@ -1315,6 +1474,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shanah",
     translation: "year",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:hayom",
@@ -1323,6 +1483,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hayom",
     translation: "today",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:machar",
@@ -1331,6 +1492,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "machar",
     translation: "tomorrow",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:etmol",
@@ -1339,6 +1501,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "etmol",
     translation: "yesterday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:tamid",
@@ -1347,6 +1510,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tamid",
     translation: "always",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:lifamim",
@@ -1355,6 +1519,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lif'amim",
     translation: "sometimes",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:achshav",
@@ -1363,6 +1528,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "achshav",
     translation: "now",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-rishon",
@@ -1371,6 +1537,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom rishon",
     translation: "Sunday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-sheni",
@@ -1379,6 +1546,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom sheni",
     translation: "Monday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-shlishi",
@@ -1387,6 +1555,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom shlishi",
     translation: "Tuesday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-revii",
@@ -1395,6 +1564,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom revii",
     translation: "Wednesday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-chamishi",
@@ -1403,6 +1573,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom chamishi",
     translation: "Thursday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:yom-shishi",
@@ -1411,6 +1582,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom shishi",
     translation: "Friday",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:shabbat",
@@ -1419,6 +1591,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shabbat",
     translation: "Saturday",
     category: "Time & Calendar",
+    level: "A2",
   },
 
   // ============================================================
@@ -1431,6 +1604,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shemesh",
     translation: "sun",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:yare'ach",
@@ -1439,6 +1613,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yare'ach",
     translation: "moon",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:kochav",
@@ -1447,6 +1622,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kochav",
     translation: "star",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:geshem",
@@ -1455,6 +1631,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "geshem",
     translation: "rain",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:ruach",
@@ -1463,6 +1640,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ruach",
     translation: "wind",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:sheleg",
@@ -1471,6 +1649,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sheleg",
     translation: "snow",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:yam",
@@ -1479,6 +1658,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yam",
     translation: "sea",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:har",
@@ -1487,6 +1667,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "har",
     translation: "mountain",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:nahar",
@@ -1495,6 +1676,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nahar",
     translation: "river",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:etz",
@@ -1503,6 +1685,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "etz",
     translation: "tree",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:perach",
@@ -1511,6 +1694,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "perach",
     translation: "flower",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:shamayim",
@@ -1519,6 +1703,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shamayim",
     translation: "sky",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:anan",
@@ -1527,6 +1712,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "anan",
     translation: "cloud",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:midbar",
@@ -1535,6 +1721,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "midbar",
     translation: "desert",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:agam",
@@ -1543,6 +1730,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "agam",
     translation: "lake",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:sadeh",
@@ -1551,6 +1739,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sadeh",
     translation: "field",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:chol",
@@ -1559,6 +1748,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chol",
     translation: "sand",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:chaya",
@@ -1567,6 +1757,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chaya",
     translation: "animal",
     category: "Nature & Weather",
+    level: "A2",
   },
 
   // ============================================================
@@ -1579,6 +1770,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sameach",
     translation: "happy",
     category: "Emotions & Descriptions",
+    level: "A1",
   },
   {
     id: "builtin:atzuv",
@@ -1587,6 +1779,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "atzuv",
     translation: "sad",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:ayef",
@@ -1595,6 +1788,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ayef",
     translation: "tired",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:gadol",
@@ -1603,6 +1797,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gadol",
     translation: "big",
     category: "Emotions & Descriptions",
+    level: "A1",
   },
   {
     id: "builtin:katan",
@@ -1611,6 +1806,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "katan",
     translation: "small",
     category: "Emotions & Descriptions",
+    level: "A1",
   },
   {
     id: "builtin:yafeh",
@@ -1619,6 +1815,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yafeh",
     translation: "beautiful (masc)",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:yafa",
@@ -1627,6 +1824,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yafa",
     translation: "beautiful (fem)",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:tov",
@@ -1635,6 +1833,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tov",
     translation: "good",
     category: "Emotions & Descriptions",
+    level: "A1",
   },
   {
     id: "builtin:ra",
@@ -1643,6 +1842,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ra",
     translation: "bad",
     category: "Emotions & Descriptions",
+    level: "A1",
   },
   {
     id: "builtin:cham",
@@ -1651,6 +1851,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "cham",
     translation: "hot",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:kar",
@@ -1659,6 +1860,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kar",
     translation: "cold",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:chazak",
@@ -1667,6 +1869,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chazak",
     translation: "strong",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:chalash",
@@ -1675,6 +1878,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chalash",
     translation: "weak",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:maher",
@@ -1683,6 +1887,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "maher",
     translation: "fast",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:le'at",
@@ -1691,6 +1896,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "le'at",
     translation: "slow",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:ko'es",
@@ -1699,6 +1905,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ko'es",
     translation: "angry",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:mefached",
@@ -1707,6 +1914,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mefached",
     translation: "scared",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:merugash",
@@ -1715,6 +1923,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "merugash",
     translation: "excited",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:chadash",
@@ -1723,6 +1932,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chadash",
     translation: "new",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:yashan",
@@ -1731,6 +1941,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yashan",
     translation: "old",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
 
   // ============================================================
@@ -1743,6 +1954,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani lo mevin",
     translation: "I don't understand (masc)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ani-lo-mevina",
@@ -1751,6 +1963,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani lo mevina",
     translation: "I don't understand (fem)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:efo-hasherutim",
@@ -1759,6 +1972,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "efo hasherutim",
     translation: "where are the restrooms",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:kamah-zeh-oleh",
@@ -1767,6 +1981,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kamah zeh oleh",
     translation: "how much does it cost",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ani-rotzeh",
@@ -1775,6 +1990,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani rotzeh",
     translation: "I want (masc)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ani-rotzah",
@@ -1783,6 +1999,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani rotzah",
     translation: "I want (fem)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:yesh-li",
@@ -1791,6 +2008,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yesh li",
     translation: "I have",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ein-li",
@@ -1799,6 +2017,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ein li",
     translation: "I don't have",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ani-ohev",
@@ -1807,6 +2026,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani ohev",
     translation: "I love (masc)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:ani-ohevet",
@@ -1815,6 +2035,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani ohevet",
     translation: "I love (fem)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:bo",
@@ -1823,6 +2044,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bo",
     translation: "come (masc)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:boi",
@@ -1831,6 +2053,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "boi",
     translation: "come (fem)",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:dai",
@@ -1839,6 +2062,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dai",
     translation: "enough",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:mazal-tov",
@@ -1847,6 +2071,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mazal tov",
     translation: "congratulations",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:bhatzlacha",
@@ -1855,6 +2080,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "b'hatzlacha",
     translation: "good luck",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:lchaim",
@@ -1863,6 +2089,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "l'chaim",
     translation: "to life / cheers",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:bteavon",
@@ -1871,6 +2098,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "b'teavon",
     translation: "bon appetit",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:kol-hakavod",
@@ -1879,6 +2107,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kol hakavod",
     translation: "well done",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:yom-huledet-sameach",
@@ -1887,6 +2116,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yom huledet sameach",
     translation: "happy birthday",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:shanah-tovah",
@@ -1895,6 +2125,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shanah tovah",
     translation: "happy new year",
     category: "Common Phrases",
+    level: "A1",
   },
 
   // ============================================================
@@ -1907,6 +2138,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chultzah",
     translation: "shirt",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:michnasiim",
@@ -1915,6 +2147,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "michnasiim",
     translation: "pants",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:na'alayim",
@@ -1923,6 +2156,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "na'alayim",
     translation: "shoes",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:kova",
@@ -1931,6 +2165,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kova",
     translation: "hat",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:simlah",
@@ -1939,6 +2174,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "simlah",
     translation: "dress",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:me'il",
@@ -1947,6 +2183,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "me'il",
     translation: "coat",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:garbayim",
@@ -1955,6 +2192,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "garbayim",
     translation: "socks",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:chagorah",
@@ -1963,6 +2201,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chagorah",
     translation: "belt",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:mishkafayim",
@@ -1971,6 +2210,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mishkafayim",
     translation: "glasses",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:tik",
@@ -1979,6 +2219,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tik",
     translation: "bag",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:tzaif",
@@ -1987,6 +2228,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tza'if",
     translation: "scarf",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:sveder",
@@ -1995,6 +2237,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sveder",
     translation: "sweater",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:sandalim",
@@ -2003,6 +2246,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sandalim",
     translation: "sandals",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:jaket",
@@ -2011,6 +2255,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "jaket",
     translation: "jacket",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:beged-yam",
@@ -2019,6 +2264,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beged yam",
     translation: "swimsuit",
     category: "Clothing",
+    level: "A2",
   },
 
   // ============================================================
@@ -2031,6 +2277,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "delet",
     translation: "door",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:chalon",
@@ -2039,6 +2286,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chalon",
     translation: "window",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:shulchan",
@@ -2047,6 +2295,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shulchan",
     translation: "table",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:kiseh",
@@ -2055,6 +2304,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kiseh",
     translation: "chair",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mitah",
@@ -2063,6 +2313,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mitah",
     translation: "bed",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mitbach",
@@ -2071,6 +2322,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mitbach",
     translation: "kitchen",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:ambatya",
@@ -2079,6 +2331,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ambatya",
     translation: "bathroom",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:salon",
@@ -2087,6 +2340,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "salon",
     translation: "living room",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:cheder-sheina",
@@ -2095,6 +2349,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "cheder sheina",
     translation: "bedroom",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:ritzpa",
@@ -2103,6 +2358,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ritzpa",
     translation: "floor",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:kir",
@@ -2111,6 +2367,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kir",
     translation: "wall",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:gag",
@@ -2119,6 +2376,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gag",
     translation: "roof",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:madregot",
@@ -2127,6 +2385,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "madregot",
     translation: "stairs",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mafteach",
@@ -2135,6 +2394,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mafteach",
     translation: "key",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:dira",
@@ -2143,6 +2403,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dira",
     translation: "apartment",
     category: "Home & House",
+    level: "A2",
   },
 
   // ============================================================
@@ -2155,6 +2416,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "le'echol",
     translation: "to eat",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lishtot",
@@ -2163,6 +2425,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lishtot",
     translation: "to drink",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lalechet",
@@ -2171,6 +2434,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lalechet",
     translation: "to go / to walk",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lirot",
@@ -2179,6 +2443,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lirot",
     translation: "to see",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lishmoa",
@@ -2187,6 +2452,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lishmoa",
     translation: "to hear",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:ledaber",
@@ -2195,6 +2461,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ledaber",
     translation: "to speak",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:likro",
@@ -2203,6 +2470,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "likro",
     translation: "to read",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lichtov",
@@ -2211,6 +2479,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lichtov",
     translation: "to write",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:larutz",
@@ -2219,6 +2488,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "larutz",
     translation: "to run",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lishon",
@@ -2227,6 +2497,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lishon",
     translation: "to sleep",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:lilmod",
@@ -2235,6 +2506,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lilmod",
     translation: "to study / to learn",
     category: "Verbs & Actions",
+    level: "A1",
   },
   {
     id: "builtin:la'avod",
@@ -2243,6 +2515,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "la'avod",
     translation: "to work",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:linso'a",
@@ -2251,6 +2524,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "linso'a",
     translation: "to travel / to drive",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:levashel",
@@ -2259,6 +2533,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "levashel",
     translation: "to cook",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lashir",
@@ -2267,6 +2542,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lashir",
     translation: "to sing",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:liknot",
@@ -2275,6 +2551,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "liknot",
     translation: "to buy",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lavo",
@@ -2283,6 +2560,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lavo",
     translation: "to come",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:latet",
@@ -2291,6 +2569,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "latet",
     translation: "to give",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lakachat",
@@ -2299,6 +2578,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lakachat",
     translation: "to take",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:la'asot",
@@ -2307,6 +2587,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "la'asot",
     translation: "to do / to make",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lada'at",
@@ -2315,6 +2596,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lada'at",
     translation: "to know",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lachshov",
@@ -2323,6 +2605,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lachshov",
     translation: "to think",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehargish",
@@ -2331,6 +2614,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehargish",
     translation: "to feel",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:lisgor",
@@ -2339,6 +2623,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lisgor",
     translation: "to close",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:liftoach",
@@ -2347,6 +2632,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "liftoach",
     translation: "to open",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lechapes",
@@ -2355,6 +2641,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lechapes",
     translation: "to search",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:limtzo",
@@ -2363,6 +2650,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "limtzo",
     translation: "to find",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehitkasher",
@@ -2371,6 +2659,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehitkasher",
     translation: "to call (phone)",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:le'ehov",
@@ -2379,6 +2668,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "le'ehov",
     translation: "to love",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehishtamesh",
@@ -2387,6 +2677,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehishtamesh",
     translation: "to use",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:lechakot",
@@ -2395,6 +2686,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lechakot",
     translation: "to wait",
     category: "Verbs & Actions",
+    level: "A2",
   },
 
   // ============================================================
@@ -2409,6 +2701,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "harbeh",
     translation: "a lot / many",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:zman",
@@ -2417,6 +2710,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "zman",
     translation: "time",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:makom",
@@ -2425,6 +2719,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "makom",
     translation: "place",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:anashim",
@@ -2433,6 +2728,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "anashim",
     translation: "people",
     category: "Family & People",
+    level: "A2",
   },
   {
     id: "builtin:meanyen",
@@ -2441,6 +2737,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "me'anyen",
     translation: "interesting",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:beyachad",
@@ -2449,6 +2746,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "beyachad",
     translation: "together",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:kef",
@@ -2457,6 +2755,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kef",
     translation: "fun",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:rayon",
@@ -2465,6 +2764,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ra'ayon",
     translation: "idea",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:metzuyan",
@@ -2473,6 +2773,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "metzuyan",
     translation: "excellent",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:nehedar",
@@ -2481,6 +2782,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nehedar",
     translation: "wonderful",
     category: "Emotions & Descriptions",
+    level: "A2",
   },
   {
     id: "builtin:medina",
@@ -2489,6 +2791,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "medina",
     translation: "state / country",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:shekel",
@@ -2497,6 +2800,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shekel",
     translation: "shekel (Israeli currency)",
     category: "Common Phrases",
+    level: "A1",
   },
 
   // Seasons
@@ -2507,6 +2811,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kayitz",
     translation: "summer",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:choref",
@@ -2515,6 +2820,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "choref",
     translation: "winter",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:aviv",
@@ -2523,6 +2829,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "aviv",
     translation: "spring",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:stav",
@@ -2531,6 +2838,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "stav",
     translation: "autumn",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:avir",
@@ -2539,6 +2847,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "avir",
     translation: "air",
     category: "Nature & Weather",
+    level: "A2",
   },
   {
     id: "builtin:ezor",
@@ -2547,6 +2856,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ezor",
     translation: "region / area",
     category: "Travel & Places",
+    level: "B1",
   },
 
   // Transportation
@@ -2557,6 +2867,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "otobus",
     translation: "bus",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:rakevet",
@@ -2565,6 +2876,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "rakevet",
     translation: "train",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:kartis",
@@ -2573,6 +2885,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kartis",
     translation: "ticket",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:nahag",
@@ -2581,6 +2894,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nahag",
     translation: "driver",
     category: "Travel & Places",
+    level: "B1",
   },
 
   // Food & Culture
@@ -2591,6 +2905,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shuk",
     translation: "market",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:arucha",
@@ -2599,6 +2914,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "arucha",
     translation: "meal",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:chumus",
@@ -2607,6 +2923,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chumus",
     translation: "hummus",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:pita",
@@ -2615,6 +2932,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "pita",
     translation: "pita bread",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:chalah",
@@ -2623,6 +2941,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chalah",
     translation: "challah bread",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:marak",
@@ -2631,6 +2950,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "marak",
     translation: "soup",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:dvash",
@@ -2639,6 +2959,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "dvash",
     translation: "honey",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:perot",
@@ -2647,6 +2968,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "perot",
     translation: "fruits",
     category: "Food & Drink",
+    level: "A1",
   },
   {
     id: "builtin:yrakot",
@@ -2655,6 +2977,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yrakot",
     translation: "vegetables",
     category: "Food & Drink",
+    level: "A2",
   },
   {
     id: "builtin:mechir",
@@ -2663,6 +2986,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mechir",
     translation: "price",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:tafrit",
@@ -2671,6 +2995,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tafrit",
     translation: "menu",
     category: "Food & Drink",
+    level: "A2",
   },
 
   // Housing & Places
@@ -2681,6 +3006,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "cheder",
     translation: "room",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mirpeset",
@@ -2689,6 +3015,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mirpeset",
     translation: "balcony",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:choze",
@@ -2697,6 +3024,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "choze",
     translation: "contract / lease",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:nof",
@@ -2705,6 +3033,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nof",
     translation: "view / scenery",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:hazmana",
@@ -2713,6 +3042,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hazmana",
     translation: "reservation / invitation",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:matana",
@@ -2721,6 +3051,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "matana",
     translation: "gift",
     category: "Common Phrases",
+    level: "A1",
   },
 
   // Work & Academic
@@ -2731,6 +3062,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "nisayon",
     translation: "experience",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:tzevet",
@@ -2739,6 +3071,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tzevet",
     translation: "team",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:tafkid",
@@ -2747,6 +3080,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tafkid",
     translation: "role / position",
     category: "Work & School",
+    level: "B1",
   },
   {
     id: "builtin:hartzaa",
@@ -2755,6 +3089,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hartzaa",
     translation: "lecture",
     category: "Work & School",
+    level: "B1",
   },
 
   // Holidays & Culture
@@ -2765,6 +3100,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chag",
     translation: "holiday / festival",
     category: "Time & Calendar",
+    level: "A2",
   },
   {
     id: "builtin:ner",
@@ -2773,6 +3109,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ner",
     translation: "candle",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:bracha",
@@ -2781,6 +3118,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bracha",
     translation: "blessing",
     category: "Common Phrases",
+    level: "A1",
   },
 
   // Health
@@ -2791,6 +3129,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ke'ev",
     translation: "pain",
     category: "Body",
+    level: "A2",
   },
   {
     id: "builtin:trufa",
@@ -2799,6 +3138,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "trufa",
     translation: "medicine",
     category: "Body",
+    level: "A2",
   },
 
   // ============================================================
@@ -2811,6 +3151,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gufiya",
     translation: "tank top / undershirt",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:chaluk",
@@ -2819,6 +3160,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chaluk",
     translation: "robe / lab coat",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:kfafot",
@@ -2827,6 +3169,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "k'fafot",
     translation: "gloves",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:chutzat",
@@ -2835,6 +3178,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chultzat triko",
     translation: "t-shirt",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:kisui-rosh",
@@ -2843,6 +3187,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kisui rosh",
     translation: "head covering",
     category: "Clothing",
+    level: "A2",
   },
   {
     id: "builtin:sandal",
@@ -2851,6 +3196,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "sandal",
     translation: "sandal",
     category: "Clothing",
+    level: "A2",
   },
 
   // ============================================================
@@ -2863,6 +3209,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "chum bahir",
     translation: "beige / tan",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:kesef-color",
@@ -2871,6 +3218,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kesef",
     translation: "silver (color)",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:bahir",
@@ -2879,6 +3227,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bahir",
     translation: "light (color shade)",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:kaheh",
@@ -2887,6 +3236,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "keheh",
     translation: "dark (color shade)",
     category: "Colors",
+    level: "A1",
   },
   {
     id: "builtin:tzivoni",
@@ -2895,6 +3245,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tziv'oni",
     translation: "colorful",
     category: "Colors",
+    level: "A1",
   },
 
   // ============================================================
@@ -2907,6 +3258,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "televizia",
     translation: "television",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mekarer",
@@ -2915,6 +3267,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mekarer",
     translation: "refrigerator",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:tanur",
@@ -2923,6 +3276,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "tanur",
     translation: "oven",
     category: "Home & House",
+    level: "A2",
   },
   {
     id: "builtin:mekhona-kvisa",
@@ -2931,6 +3285,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "m'khonat kvisa",
     translation: "washing machine",
     category: "Home & House",
+    level: "A2",
   },
 
   // ============================================================
@@ -2943,6 +3298,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lirkod",
     translation: "to dance",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:litzok",
@@ -2951,6 +3307,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "litz'ok",
     translation: "to shout",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:livkot",
@@ -2959,6 +3316,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "livkot",
     translation: "to cry",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lesachek",
@@ -2967,6 +3325,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lesachek",
     translation: "to play",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehachin",
@@ -2975,6 +3334,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehachin",
     translation: "to prepare",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehazkir",
@@ -2983,6 +3343,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehazkir",
     translation: "to remind",
     category: "Verbs & Actions",
+    level: "B1",
   },
   {
     id: "builtin:lishmor",
@@ -2991,6 +3352,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lishmor",
     translation: "to guard / keep",
     category: "Verbs & Actions",
+    level: "A2",
   },
   {
     id: "builtin:lehitlabesh",
@@ -2999,6 +3361,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lehitlabesh",
     translation: "to get dressed",
     category: "Verbs & Actions",
+    level: "A2",
   },
 
   // ── Pronouns ──
@@ -3009,6 +3372,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ani",
     translation: "I",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:ata",
@@ -3017,6 +3381,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ata",
     translation: "you (m.)",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:at",
@@ -3025,6 +3390,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "at",
     translation: "you (f.)",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:hu",
@@ -3033,6 +3399,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hu",
     translation: "he",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:hi",
@@ -3041,6 +3408,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hi",
     translation: "she",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:anachnu",
@@ -3049,6 +3417,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "anachnu",
     translation: "we",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:atem",
@@ -3057,6 +3426,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "atem",
     translation: "you (m.pl.)",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:aten",
@@ -3065,6 +3435,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "aten",
     translation: "you (f.pl.)",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:hem",
@@ -3073,6 +3444,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hem",
     translation: "they (m.)",
     category: "Pronouns",
+    level: "A1",
   },
   {
     id: "builtin:hen",
@@ -3081,6 +3453,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "hen",
     translation: "they (f.)",
     category: "Pronouns",
+    level: "A1",
   },
 
   // ── Question Words ──
@@ -3091,6 +3464,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "mi",
     translation: "who",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:ma",
@@ -3099,6 +3473,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ma",
     translation: "what",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:lama",
@@ -3107,6 +3482,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "lama",
     translation: "why",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:eich",
@@ -3115,6 +3491,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "eich",
     translation: "how",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:matai",
@@ -3123,6 +3500,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "matai",
     translation: "when",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:eifo",
@@ -3131,6 +3509,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "eifo",
     translation: "where",
     category: "Question Words",
+    level: "A1",
   },
   {
     id: "builtin:kama",
@@ -3139,6 +3518,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "kama",
     translation: "how much / how many",
     category: "Question Words",
+    level: "A1",
   },
 
   // ── Connectors ──
@@ -3149,6 +3529,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shel",
     translation: "of / belonging to",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:im",
@@ -3157,6 +3538,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "im",
     translation: "with",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:bli",
@@ -3165,6 +3547,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "bli",
     translation: "without",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:aval",
@@ -3173,6 +3556,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "aval",
     translation: "but",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:gam",
@@ -3181,6 +3565,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "gam",
     translation: "also",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:o",
@@ -3189,6 +3574,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "o",
     translation: "or",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:ki",
@@ -3197,6 +3583,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ki",
     translation: "because",
     category: "Connectors",
+    level: "A1",
   },
   {
     id: "builtin:ve",
@@ -3205,6 +3592,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "ve",
     translation: "and",
     category: "Connectors",
+    level: "A1",
   },
 
   // ── Story Vocabulary ──
@@ -3215,6 +3603,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "echad",
     translation: "one (m.)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shnayim",
@@ -3223,6 +3612,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shnayim",
     translation: "two (m.)",
     category: "Numbers",
+    level: "A1",
   },
   {
     id: "builtin:shem",
@@ -3231,6 +3621,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "shem",
     translation: "name",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:naim-meod",
@@ -3239,6 +3630,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "na'im me'od",
     translation: "nice to meet you",
     category: "Common Phrases",
+    level: "A1",
   },
   {
     id: "builtin:yamina",
@@ -3247,6 +3639,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yamina",
     translation: "to the right",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:smola",
@@ -3255,6 +3648,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "smola",
     translation: "to the left",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:yashar",
@@ -3263,6 +3657,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "yashar",
     translation: "straight",
     category: "Travel & Places",
+    level: "B1",
   },
   {
     id: "builtin:avanim",
@@ -3271,6 +3666,7 @@ export const VOCABULARY: Word[] = [
     transliteration: "avanim",
     translation: "stones",
     category: "Nature & Weather",
+    level: "B1",
   },
   {
     id: "builtin:katuv",
@@ -3279,5 +3675,646 @@ export const VOCABULARY: Word[] = [
     transliteration: "katuv",
     translation: "written",
     category: "Common Phrases",
+    level: "A1",
+  },
+
+  // ============================================================
+  // Daily Routines (A2) — new category
+  // ============================================================
+  {
+    id: "builtin:lehitorer",
+    hebrew: "להתעורר",
+    hebrewNikud: "לְהִתְעוֹרֵר",
+    transliteration: "lehit'orer",
+    translation: "to wake up",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:lehitkalech",
+    hebrew: "להתקלח",
+    hebrewNikud: "לְהִתְקַלֵּחַ",
+    transliteration: "lehitkalech",
+    translation: "to shower",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:letzachtzech-shinayim",
+    hebrew: "לצחצח שיניים",
+    hebrewNikud: "לְצַחְצֵחַ שִׁינַיִם",
+    transliteration: "letzachtzech shinayim",
+    translation: "to brush teeth",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:leeroz",
+    hebrew: "לארוז",
+    hebrewNikud: "לֶאֱרוֹז",
+    transliteration: "le'eroz",
+    translation: "to pack",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:lehikanes",
+    hebrew: "להיכנס",
+    hebrewNikud: "לְהִיכָּנֵס",
+    transliteration: "lehikanes",
+    translation: "to enter",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:latset",
+    hebrew: "לצאת",
+    hebrewNikud: "לָצֵאת",
+    transliteration: "latset",
+    translation: "to go out",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:lachazor",
+    hebrew: "לחזור",
+    hebrewNikud: "לַחֲזוֹר",
+    transliteration: "lachazor",
+    translation: "to return",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:lehiradem",
+    hebrew: "להירדם",
+    hebrewNikud: "לְהֵירָדֵם",
+    transliteration: "lehiradem",
+    translation: "to fall asleep",
+    category: "Daily Routines",
+    level: "A2",
+  },
+  {
+    id: "builtin:lehitkhonen",
+    hebrew: "להתכונן",
+    hebrewNikud: "לְהִתְכּוֹנֵן",
+    transliteration: "lehitkhonen",
+    translation: "to prepare oneself",
+    category: "Daily Routines",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Shopping & Money (A2) — new category
+  // ============================================================
+  {
+    id: "builtin:kesef-money",
+    hebrew: "כסף",
+    hebrewNikud: "כֶּסֶף",
+    transliteration: "kesef",
+    translation: "money",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:limkor",
+    hebrew: "למכור",
+    hebrewNikud: "לִמְכּוֹר",
+    transliteration: "limkor",
+    translation: "to sell",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:zol",
+    hebrew: "זול",
+    hebrewNikud: "זוֹל",
+    transliteration: "zol",
+    translation: "cheap",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:yakar",
+    hebrew: "יקר",
+    hebrewNikud: "יָקָר",
+    transliteration: "yakar",
+    translation: "expensive",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:hanacha",
+    hebrew: "הנחה",
+    hebrewNikud: "הֲנָחָה",
+    transliteration: "hanacha",
+    translation: "discount",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Health (A2) — new category
+  // ============================================================
+  {
+    id: "builtin:rofe",
+    hebrew: "רופא",
+    hebrewNikud: "רוֹפֵא",
+    transliteration: "rofe",
+    translation: "doctor",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:chole",
+    hebrew: "חולה",
+    hebrewNikud: "חוֹלֶה",
+    transliteration: "chole",
+    translation: "sick",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:bari",
+    hebrew: "בריא",
+    hebrewNikud: "בָּרִיא",
+    transliteration: "bari",
+    translation: "healthy",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:refua",
+    hebrew: "רפואה",
+    hebrewNikud: "רְפוּאָה",
+    transliteration: "refu'a",
+    translation: "medicine / healing",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:mirshim",
+    hebrew: "מרשם",
+    hebrewNikud: "מִרְשָׁם",
+    transliteration: "mirshim",
+    translation: "prescription",
+    category: "Health",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Transport (A2) — new category
+  // ============================================================
+  {
+    id: "builtin:monit",
+    hebrew: "מונית",
+    hebrewNikud: "מוֹנִית",
+    transliteration: "monit",
+    translation: "taxi",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:matos",
+    hebrew: "מטוס",
+    hebrewNikud: "מָטוֹס",
+    transliteration: "matos",
+    translation: "airplane",
+    category: "Transport",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Education (A2) — new category
+  // ============================================================
+  {
+    id: "builtin:tziun",
+    hebrew: "ציון",
+    hebrewNikud: "צִיּוּן",
+    transliteration: "tziun",
+    translation: "grade",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:kita",
+    hebrew: "כיתה",
+    hebrewNikud: "כִּיתָּה",
+    transliteration: "kita",
+    translation: "classroom",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:limudim",
+    hebrew: "לימודים",
+    hebrewNikud: "לִימוּדִים",
+    transliteration: "limudim",
+    translation: "studies",
+    category: "Education",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Emotions expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:meushar",
+    hebrew: "מאושר",
+    hebrewNikud: "מְאוּשָׁר",
+    transliteration: "me'ushar",
+    translation: "happy / blessed",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:mudag",
+    hebrew: "מודאג",
+    hebrewNikud: "מוּדְאָג",
+    transliteration: "mud'ag",
+    translation: "worried",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:mufta",
+    hebrew: "מופתע",
+    hebrewNikud: "מוּפְתָּע",
+    transliteration: "mufta",
+    translation: "surprised",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:mevulbal",
+    hebrew: "מבולבל",
+    hebrewNikud: "מְבוּלְבָּל",
+    transliteration: "mevulbal",
+    translation: "confused",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:gee",
+    hebrew: "גאה",
+    hebrewNikud: "גֵּאֶה",
+    transliteration: "ge'e",
+    translation: "proud",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:metuskal",
+    hebrew: "מתוסכל",
+    hebrewNikud: "מְתוּסְכָּל",
+    transliteration: "metuskal",
+    translation: "frustrated",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:nirgash",
+    hebrew: "נרגש",
+    hebrewNikud: "נִרְגָּשׁ",
+    transliteration: "nirgash",
+    translation: "excited",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+  {
+    id: "builtin:merutza",
+    hebrew: "מרוצה",
+    hebrewNikud: "מְרוּצֶה",
+    transliteration: "merutza",
+    translation: "satisfied",
+    category: "Emotions & Descriptions",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Weather expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:seara",
+    hebrew: "סערה",
+    hebrewNikud: "סְעָרָה",
+    transliteration: "se'ara",
+    translation: "storm",
+    category: "Nature & Weather",
+    level: "A2",
+  },
+  {
+    id: "builtin:temperatura",
+    hebrew: "טמפרטורה",
+    hebrewNikud: "טֶמְפֶּרָטוּרָה",
+    transliteration: "temperatura",
+    translation: "temperature",
+    category: "Nature & Weather",
+    level: "A2",
+  },
+  {
+    id: "builtin:tachazit",
+    hebrew: "תחזית",
+    hebrewNikud: "תַּחֲזִית",
+    transliteration: "tachazit",
+    translation: "forecast",
+    category: "Nature & Weather",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Daily Routines expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:lehitgalech",
+    hebrew: "להתגלח",
+    hebrewNikud: "לְהִתְגַּלֵּחַ",
+    transliteration: "lehitgale'ach",
+    translation: "to shave",
+    category: "Daily Routines",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Shopping & Money expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:kupah",
+    hebrew: "קופה",
+    hebrewNikud: "קוּפָּה",
+    transliteration: "kupa",
+    translation: "cash register / checkout",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:kartis-ashrai",
+    hebrew: "כרטיס אשראי",
+    hebrewNikud: "כַּרְטִיס אַשְׁרַאי",
+    transliteration: "kartis ashrai",
+    translation: "credit card",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:kabala",
+    hebrew: "קבלה",
+    hebrewNikud: "קַבָּלָה",
+    transliteration: "kabala",
+    translation: "receipt",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:mispar",
+    hebrew: "מספר",
+    hebrewNikud: "מִסְפָּר",
+    transliteration: "mispar",
+    translation: "number",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+  {
+    id: "builtin:leshilem",
+    hebrew: "לשלם",
+    hebrewNikud: "לְשַׁלֵּם",
+    transliteration: "leshalem",
+    translation: "to pay",
+    category: "Shopping & Money",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Health expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:rofeh-shinayim",
+    hebrew: "רופא שיניים",
+    hebrewNikud: "רוֹפֵא שִׁינַיִם",
+    transliteration: "rofe shinayim",
+    translation: "dentist",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:achot-health",
+    hebrew: "אחות",
+    hebrewNikud: "אָחוֹת",
+    transliteration: "achot",
+    translation: "nurse",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:chom",
+    hebrew: "חום",
+    hebrewNikud: "חוֹם",
+    transliteration: "chom",
+    translation: "fever",
+    category: "Health",
+    level: "A2",
+  },
+  {
+    id: "builtin:hitztannut",
+    hebrew: "הצטננות",
+    hebrewNikud: "הִצְטַנְּנוּת",
+    transliteration: "hitztannut",
+    translation: "cold (illness)",
+    category: "Health",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Transport expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:rechev",
+    hebrew: "רכב",
+    hebrewNikud: "רֶכֶב",
+    transliteration: "rechev",
+    translation: "vehicle",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:ofanayim",
+    hebrew: "אופניים",
+    hebrewNikud: "אוֹפַנַּיִם",
+    transliteration: "ofanayim",
+    translation: "bicycle",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:mechonit",
+    hebrew: "מכונית",
+    hebrewNikud: "מְכוֹנִית",
+    transliteration: "mekhonit",
+    translation: "car",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:kav",
+    hebrew: "קו",
+    hebrewNikud: "קַו",
+    transliteration: "kav",
+    translation: "line / route",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:chanaya",
+    hebrew: "חנייה",
+    hebrewNikud: "חֲנָיָה",
+    transliteration: "chanaya",
+    translation: "parking",
+    category: "Transport",
+    level: "A2",
+  },
+  {
+    id: "builtin:derech",
+    hebrew: "דרך",
+    hebrewNikud: "דֶּרֶךְ",
+    transliteration: "derech",
+    translation: "way / road",
+    category: "Transport",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Education expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:luach",
+    hebrew: "לוח",
+    hebrewNikud: "לוּחַ",
+    transliteration: "lu'ach",
+    translation: "board / blackboard",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:machberet",
+    hebrew: "מחברת",
+    hebrewNikud: "מַחְבֶּרֶת",
+    transliteration: "machberet",
+    translation: "notebook",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:iparon",
+    hebrew: "עיפרון",
+    hebrewNikud: "עִפָּרוֹן",
+    transliteration: "iparon",
+    translation: "pencil",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:teudat-zehut",
+    hebrew: "תעודת זהות",
+    hebrewNikud: "תְּעוּדַת זֵהוּת",
+    transliteration: "teudat zehut",
+    translation: "ID card",
+    category: "Education",
+    level: "A2",
+  },
+  {
+    id: "builtin:hafsakah",
+    hebrew: "הפסקה",
+    hebrewNikud: "הַפְסָקָה",
+    transliteration: "hafsaka",
+    translation: "break / recess",
+    category: "Education",
+    level: "A2",
+  },
+
+  // ============================================================
+  // Home & House expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:sapah",
+    hebrew: "ספה",
+    hebrewNikud: "סַפָּה",
+    transliteration: "sapa",
+    translation: "couch / sofa",
+    category: "Home & House",
+    level: "A2",
+  },
+  {
+    id: "builtin:or-light",
+    hebrew: "אור",
+    hebrewNikud: "אוֹר",
+    transliteration: "or",
+    translation: "light",
+    category: "Home & House",
+    level: "A2",
+  },
+  {
+    id: "builtin:mazgan",
+    hebrew: "מזגן",
+    hebrewNikud: "מַזְגָּן",
+    transliteration: "mazgan",
+    translation: "air conditioner",
+    category: "Home & House",
+    level: "A2",
+  },
+  // ============================================================
+  // Food & Drink expanded (A2)
+  // ============================================================
+  {
+    id: "builtin:beitsa",
+    hebrew: "ביצה",
+    hebrewNikud: "בֵּיצָה",
+    transliteration: "beitsa",
+    translation: "egg",
+    category: "Food & Drink",
+    level: "A2",
+  },
+  {
+    id: "builtin:sukar",
+    hebrew: "סוכר",
+    hebrewNikud: "סוּכָּר",
+    transliteration: "sukar",
+    translation: "sugar",
+    category: "Food & Drink",
+    level: "A2",
+  },
+  {
+    id: "builtin:melach",
+    hebrew: "מלח",
+    hebrewNikud: "מֶלַח",
+    transliteration: "melach",
+    translation: "salt",
+    category: "Food & Drink",
+    level: "A2",
+  },
+  {
+    id: "builtin:pilpel",
+    hebrew: "פלפל",
+    hebrewNikud: "פִּלְפֵּל",
+    transliteration: "pilpel",
+    translation: "pepper",
+    category: "Food & Drink",
+    level: "A2",
+  },
+  {
+    id: "builtin:glida",
+    hebrew: "גלידה",
+    hebrewNikud: "גְּלִידָה",
+    transliteration: "glida",
+    translation: "ice cream",
+    category: "Food & Drink",
+    level: "A2",
+  },
+  {
+    id: "builtin:mitz",
+    hebrew: "מיץ",
+    hebrewNikud: "מִיץ",
+    transliteration: "mitz",
+    translation: "juice",
+    category: "Food & Drink",
+    level: "A2",
   },
 ];
