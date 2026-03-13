@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { AppMode } from "@/types";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { SK_COMPLETED_LINES, SK_COMPLETED_PRAYER_LINES, SK_STORY_PROGRESS } from "@/lib/storage-keys";
 import { PASSAGES } from "@/data/passages";
 import { PRAYERS } from "@/data/prayers";
 import { STORIES } from "@/data/stories";
@@ -29,20 +30,20 @@ interface ReadCard {
 export default function ReadHub({ onNavigate }: ReadHubProps) {
   // Passage progress — localStorage key: davar-completed-lines
   const [completedLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-lines",
+    SK_COMPLETED_LINES,
     {}
   );
 
   // Prayer progress — localStorage key: davar-completed-prayer-lines
   const [completedPrayerLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-prayer-lines",
+    SK_COMPLETED_PRAYER_LINES,
     {}
   );
 
   // Story progress — localStorage key: davar-story-progress
   const [storyProgress] = useLocalStorage<{
     completedChapters: string[];
-  }>("davar-story-progress", { completedChapters: [] });
+  }>(SK_STORY_PROGRESS, { completedChapters: [] });
 
   // Count fully completed passages
   const passagesCompleted = useMemo(() => {

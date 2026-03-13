@@ -7,6 +7,7 @@ import { useSpacedRepetition } from "./useSpacedRepetition";
 import { useQuizStats } from "./useQuizStats";
 import { PASSAGES } from "@/data/passages";
 import { GRAMMAR_LESSONS } from "@/data/grammar";
+import { SK_COMPLETED_LINES, SK_GRAMMAR_COMPLETED, SK_LESSON_STEP } from "@/lib/storage-keys";
 
 /* ── Level definitions ──────────────────────────────────────── */
 
@@ -96,7 +97,7 @@ export function useProficiency(): UseProficiencyReturn {
 
   // Reading progress: passages where all lines are completed
   const [completedLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-lines",
+    SK_COMPLETED_LINES,
     {}
   );
 
@@ -104,13 +105,13 @@ export function useProficiency(): UseProficiencyReturn {
   // GrammarMode does not currently persist completion, so this key can be
   // populated by future UI or manually. We read whatever is there.
   const [grammarCompleted] = useLocalStorage<string[]>(
-    "davar-grammar-completed",
+    SK_GRAMMAR_COMPLETED,
     []
   );
 
   // Also check lesson-step records: passages that reached "complete"
   const [lessonSteps] = useLocalStorage<Record<string, string>>(
-    "davar-lesson-step",
+    SK_LESSON_STEP,
     {}
   );
 

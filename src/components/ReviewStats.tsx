@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 import { CardState } from "@/types";
 import { isWordMastered } from "@/lib/fsrs";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ interface ReviewStatsProps {
   dueCount: number;
 }
 
-export default function ReviewStats({
+export default memo(function ReviewStats({
   cardStates,
   totalWordCount,
   dueCount,
@@ -188,7 +188,7 @@ export default function ReviewStats({
       </div>
     </div>
   );
-}
+})
 
 function StatBox({
   label,

@@ -11,6 +11,7 @@ import AudioButton from "./AudioButton";
 import { cn, shuffle } from "@/lib/utils";
 import { AppMode } from "@/types";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { SK_GRAMMAR_COMPLETED } from "@/lib/storage-keys";
 
 type GrammarTab = "conjugation" | "practice" | "trainer" | "adjectives" | "lessons";
 
@@ -118,7 +119,7 @@ export default function GrammarMode({ onNavigate }: { onNavigate?: (mode: AppMod
   const [selectedPattern, setSelectedPattern] = useState(0);
   const [selectedTense, setSelectedTense] = useState<"past" | "present" | "future">("past");
   const [expandedLesson, setExpandedLesson] = useState<string | null>(null);
-  const [completedLessons, setCompletedLessons] = useLocalStorage<string[]>("davar-grammar-completed", []);
+  const [completedLessons, setCompletedLessons] = useLocalStorage<string[]>(SK_GRAMMAR_COMPLETED, []);
 
   // Practice mode state
   const [practiceAnswer, setPracticeAnswer] = useState("");

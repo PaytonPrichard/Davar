@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { cn } from "@/lib/utils";
+import { SK_DAILY_GOALS } from "@/lib/storage-keys";
 
 interface DailyGoalsProps {
   reviewsDone: number;
@@ -28,7 +29,7 @@ export default function DailyGoals({
   quizzesTaken,
 }: DailyGoalsProps) {
   const [targets, setTargets] = useLocalStorage<GoalTargets>(
-    "davar-daily-goals",
+    SK_DAILY_GOALS,
     DEFAULT_TARGETS
   );
   const [showConfig, setShowConfig] = useState(false);

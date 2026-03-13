@@ -17,6 +17,7 @@ import PlacementTest, { PlacementResult, PlacementLevel } from "./PlacementTest"
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useAuthContext } from "./AuthProvider";
 import { cn } from "@/lib/utils";
+import { SK_PLACEMENT } from "@/lib/storage-keys";
 
 // Dynamic imports for heavy, non-initial-view components
 const ReadingMode = dynamic(() => import("./ReadingMode"));
@@ -135,7 +136,7 @@ export default function AppShell() {
   const { level: xpLevel, totalXP, xpProgress, todayXP } = useXP();
   const { user, isSignedIn, configured: authConfigured, syncStatus } = useAuthContext();
   const [placementResult, setPlacementResult, placementHydrated] =
-    useLocalStorage<PlacementResult | null>("davar-placement", null);
+    useLocalStorage<PlacementResult | null>(SK_PLACEMENT, null);
 
   const showPlacement = placementHydrated && placementResult === null;
 

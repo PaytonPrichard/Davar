@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Word, ReviewQuality } from "@/types";
 import AudioButton from "./AudioButton";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ interface FlashcardProps {
   onMarkKnown?: () => void;
 }
 
-export default function Flashcard({ word, onRate, onSkip, onMarkKnown }: FlashcardProps) {
+export default memo(function Flashcard({ word, onRate, onSkip, onMarkKnown }: FlashcardProps) {
   const [revealed, setRevealed] = useState(false);
 
   const handleReveal = () => {
@@ -132,4 +132,4 @@ export default function Flashcard({ word, onRate, onSkip, onMarkKnown }: Flashca
       )}
     </div>
   );
-}
+})

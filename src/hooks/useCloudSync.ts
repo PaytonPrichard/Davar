@@ -3,10 +3,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
+import { STORAGE_PREFIX, SK_ACHIEVEMENTS, SK_CARD_STATES, SK_SETTINGS, SK_STREAK, SK_TOTAL_REVIEWS, SK_XP } from "@/lib/storage-keys";
 
-const DAVAR_PREFIX = "davar-";
+const DAVAR_PREFIX = STORAGE_PREFIX;
 // Keys that contain API keys / secrets — never sync to cloud
-const EXCLUDED_KEYS = ["davar-settings"];
+const EXCLUDED_KEYS = [SK_SETTINGS];
 
 type SyncStatus = "idle" | "syncing" | "synced" | "error" | "conflict";
 
@@ -66,7 +67,7 @@ function mergeData(
     }
 
     // For XP state, keep higher totalXP
-    if (key === "davar-xp") {
+    if (key === SK_XP) {
       const lxp = (l as Record<string, number>)?.totalXP ?? 0;
       const cxp = (c as Record<string, number>)?.totalXP ?? 0;
       merged[key] = lxp >= cxp ? l : c;
@@ -74,7 +75,7 @@ function mergeData(
     }
 
     // For streak, keep higher current
-    if (key === "davar-streak") {
+    if (key === SK_STREAK) {
       const ls = (l as Record<string, number>)?.current ?? 0;
       const cs = (c as Record<string, number>)?.current ?? 0;
       merged[key] = ls >= cs ? l : c;
@@ -82,7 +83,7 @@ function mergeData(
     }
 
     // For card states (SRS), keep whichever has more entries
-    if (key === "davar-card-states") {
+    if (key === SK_CARD_STATES) {
       const lCount = Object.keys(l as Record<string, unknown>).length;
       const cCount = Object.keys(c as Record<string, unknown>).length;
       // Merge individual cards — keep each card's most recent review
@@ -107,7 +108,7 @@ function mergeData(
     }
 
     // For total-reviews, keep higher
-    if (key === "davar-total-reviews") {
+    if (key === SK_TOTAL_REVIEWS) {
       merged[key] = Math.max(
         typeof l === "number" ? l : 0,
         typeof c === "number" ? c : 0
@@ -116,7 +117,7 @@ function mergeData(
     }
 
     // For achievements, merge unlocked IDs
-    if (key === "davar-achievements") {
+    if (key === SK_ACHIEVEMENTS) {
       const la = l as { unlockedIds?: string[]; unlockedAt?: Record<string, string> };
       const ca = c as { unlockedIds?: string[]; unlockedAt?: Record<string, string> };
       const ids = [...new Set([...(la.unlockedIds ?? []), ...(ca.unlockedIds ?? [])])];

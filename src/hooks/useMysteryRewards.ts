@@ -3,6 +3,7 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { getToday } from "@/lib/utils";
+import { SK_MYSTERY_REWARDS } from "@/lib/storage-keys";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -76,7 +77,7 @@ const REWARDS: MysteryReward[] = [
 
 export function useMysteryRewards() {
   const [state, setState, hydrated] = useLocalStorage<MysteryRewardsState>(
-    "davar-mystery-rewards",
+    SK_MYSTERY_REWARDS,
     DEFAULT_STATE
   );
 

@@ -1,12 +1,13 @@
 "use client";
 
 import { useSyncExternalStore, useCallback } from "react";
+import { SK_THEME, SK_THEME_CHANGE } from "@/lib/storage-keys";
 
 type Theme = "dark" | "light";
 
 function getThemeSnapshot(): Theme {
   try {
-    const stored = localStorage.getItem("davar-theme");
+    const stored = localStorage.getItem(SK_THEME);
     if (stored === "light" || stored === "dark") return stored;
   } catch {}
   return "light";
@@ -19,10 +20,10 @@ function getServerSnapshot(): Theme {
 function subscribe(callback: () => void): () => void {
   // Listen for storage changes (cross-tab) and custom event (same-tab)
   window.addEventListener("storage", callback);
-  window.addEventListener("davar-theme-change", callback);
+  window.addEventListener(SK_THEME_CHANGE, callback);
   return () => {
     window.removeEventListener("storage", callback);
-    window.removeEventListener("davar-theme-change", callback);
+    window.removeEventListener(SK_THEME_CHANGE, callback);
   };
 }
 
@@ -32,9 +33,9 @@ export function useTheme() {
   const setTheme = useCallback((newTheme: Theme) => {
     document.documentElement.setAttribute("data-theme", newTheme);
     try {
-      localStorage.setItem("davar-theme", newTheme);
+      localStorage.setItem(SK_THEME, newTheme);
     } catch {}
-    window.dispatchEvent(new Event("davar-theme-change"));
+    window.dispatchEvent(new Event(SK_THEME_CHANGE));
   }, []);
 
   const toggleTheme = useCallback(() => {

@@ -6,6 +6,7 @@ import { useXP } from "@/hooks/useXP";
 import { useStreak } from "@/hooks/useStreak";
 import { trackQuest } from "@/hooks/useQuests";
 import { cn, shuffle } from "@/lib/utils";
+import { SK_SENTENCES_BUILT } from "@/lib/storage-keys";
 
 /* ── Sentence data ─────────────────────────────────────────── */
 
@@ -428,8 +429,8 @@ export default function SentenceBuilderMode({ onNavigate }: SentenceBuilderModeP
 
       // Increment sentences_built counter for achievements
       try {
-        const prev = parseInt(localStorage.getItem("davar-sentences-built") ?? "0", 10);
-        localStorage.setItem("davar-sentences-built", String(prev + 1));
+        const prev = parseInt(localStorage.getItem(SK_SENTENCES_BUILT) ?? "0", 10);
+        localStorage.setItem(SK_SENTENCES_BUILT, String(prev + 1));
       } catch {
         // localStorage unavailable
       }

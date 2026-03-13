@@ -6,6 +6,7 @@ import { VOCABULARY } from "@/data/vocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { useVocabulary } from "@/hooks/useVocabulary";
 import { AppMode } from "@/types";
+import { SK_PLACEMENT_ANSWERS } from "@/lib/storage-keys";
 
 /* ── Question types ─────────────────────────────────────────── */
 
@@ -692,7 +693,7 @@ export default function PlacementTest({ onComplete, onSkip }: PlacementTestProps
             <button
               onClick={() => {
                 try {
-                  localStorage.setItem("davar-placement-answers", JSON.stringify(answerDetails));
+                  localStorage.setItem(SK_PLACEMENT_ANSWERS, JSON.stringify(answerDetails));
                   setSavedToProfile(true);
                 } catch { /* quota */ }
               }}

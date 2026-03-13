@@ -77,27 +77,7 @@ function weightedWordSelection(
   return shuffle(pool.map((s) => s.word)).slice(0, count);
 }
 
-type LevelFilter = "all" | "A1" | "A2" | "B1";
-
-const LEVEL_PILLS: { value: LevelFilter; label: string; activeClass: string }[] = [
-  { value: "all", label: "All", activeClass: "bg-accent/10 text-accent border-accent/30" },
-  { value: "A1", label: "Basics", activeClass: "bg-accent-green/10 text-accent-green border-accent-green/30" },
-  { value: "A2", label: "Growing", activeClass: "bg-amber-500/10 text-amber-400 border-amber-500/30" },
-  { value: "B1", label: "Challenging", activeClass: "bg-accent-blue/10 text-accent-blue border-accent-blue/30" },
-];
-
-function getInitialLevelFilter(): LevelFilter {
-  if (typeof window === "undefined") return "all";
-  try {
-    const raw = localStorage.getItem("davar-placement");
-    if (raw) {
-      const placement = JSON.parse(raw);
-      if (placement.level === "complete-beginner" || placement.level === "beginner") return "A1";
-      if (placement.level === "intermediate") return "A2";
-    }
-  } catch { /* ignore */ }
-  return "all";
-}
+import { LevelFilter, LEVEL_PILLS, getInitialLevelFilter } from "@/lib/level-filter";
 
 export default function QuizMode({ onNavigate }: { onNavigate?: (mode: AppMode) => void }) {
   const { allWords, categories } = useVocabulary();

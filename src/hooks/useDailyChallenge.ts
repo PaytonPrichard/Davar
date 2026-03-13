@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { getToday } from "@/lib/utils";
 import { Word } from "@/types";
+import { SK_DAILY_CHALLENGE } from "@/lib/storage-keys";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -163,7 +164,7 @@ const DEFAULT_STATE: DailyChallengeState = {
 
 export function useDailyChallenge(words: Word[]) {
   const [state, setState, hydrated] = useLocalStorage<DailyChallengeState>(
-    "davar-daily-challenge",
+    SK_DAILY_CHALLENGE,
     DEFAULT_STATE
   );
 

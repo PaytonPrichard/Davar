@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { AchievementState, Achievement } from "@/types";
 import { ACHIEVEMENTS } from "@/data/achievements";
+import { SK_ACHIEVEMENTS } from "@/lib/storage-keys";
 
 export interface AchievementProgress {
   achievement: Achievement;
@@ -123,7 +124,7 @@ const DEFAULT_STATE: AchievementState = {
 
 export function useAchievements() {
   const [state, setState] = useLocalStorage<AchievementState>(
-    "davar-achievements",
+    SK_ACHIEVEMENTS,
     DEFAULT_STATE
   );
 

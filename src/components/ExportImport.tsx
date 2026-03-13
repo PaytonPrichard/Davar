@@ -1,38 +1,7 @@
 "use client";
 
 import { useState, useRef, useMemo } from "react";
-
-const DAVAR_PREFIX = "davar-";
-
-function getAllDavarData(): Record<string, unknown> {
-  const data: Record<string, unknown> = {};
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith(DAVAR_PREFIX)) {
-        try {
-          data[key] = JSON.parse(localStorage.getItem(key) ?? "null");
-        } catch {
-          data[key] = localStorage.getItem(key);
-        }
-      }
-    }
-  } catch {}
-  return data;
-}
-
-function getStorageSizeBytes(): number {
-  let total = 0;
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith(DAVAR_PREFIX)) {
-        total += (localStorage.getItem(key) ?? "").length * 2; // UTF-16
-      }
-    }
-  } catch {}
-  return total;
-}
+import { getAllDavarData, getStorageSizeBytes, STORAGE_PREFIX } from "@/lib/storage-keys";
 
 export default function ExportImport() {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -77,7 +46,7 @@ export default function ExportImport() {
 
         // Validate it has davar- keys
         const keys = Object.keys(data);
-        const davarKeys = keys.filter((k) => k.startsWith(DAVAR_PREFIX));
+        const davarKeys = keys.filter((k) => k.startsWith(STORAGE_PREFIX));
         if (davarKeys.length === 0) {
           setMessage({
             type: "error",
@@ -127,7 +96,7 @@ export default function ExportImport() {
       const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key?.startsWith(DAVAR_PREFIX)) {
+        if (key?.startsWith(STORAGE_PREFIX)) {
           keysToRemove.push(key);
         }
       }

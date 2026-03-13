@@ -10,6 +10,7 @@ import {
   getLevelFromXP,
   xpProgressInLevel,
 } from "@/types";
+import { SK_XP_BUFF, SK_MYSTERY_REWARDS, SK_XP } from "@/lib/storage-keys";
 
 const DEFAULT_XP_STATE: XPState = {
   totalXP: 0,
@@ -20,68 +21,44 @@ const DEFAULT_XP_STATE: XPState = {
 /* ── XP Multiplier helper ──────────────────────────────────── */
 
 /**
- * Returns the active XP multiplier.
- * Sources (checked in order, first match wins):
- *  1. Saturday "Double XP" event (getDay() === 6)
- *  2. Mystery-reward XP buff stored in localStorage
- *     (key: "davar-xp-buff", shape: { multiplier: number, expiresAt: ISO_string })
- *  3. Mystery-reward state multiplier stored by useMysteryRewards
- *     (key: "davar-mystery-rewards", xpMultiplier / xpMultiplierExpires)
- */
-export function getXPMultiplier(): number {
-  // Check Double XP Saturday
-  if (new Date().getDay() === 6) return 2;
-
-  // Check mystery reward buff (standalone key)
-  try {
-    const buff = JSON.parse(localStorage.getItem("davar-xp-buff") || "null");
-    if (buff && new Date(buff.expiresAt) > new Date()) return buff.multiplier;
-  } catch {
-    /* ignore malformed data */
-  }
-
-  // Check mystery-rewards state multiplier
-  try {
-    const mrState = JSON.parse(
-      localStorage.getItem("davar-mystery-rewards") || "null"
-    );
-    if (mrState && mrState.xpMultiplierExpires === getToday() && mrState.xpMultiplier > 1) {
-      return mrState.xpMultiplier;
-    }
-  } catch {
-    /* ignore malformed data */
-  }
-
-  return 1;
-}
-
-/**
  * Describes *why* the multiplier is active so the UI can pick the right copy.
  */
 export type XPMultiplierSource = "saturday" | "mystery-buff" | "mystery-reward" | null;
 
-export function getXPMultiplierSource(): XPMultiplierSource {
-  if (new Date().getDay() === 6) return "saturday";
+/**
+ * Returns the active XP multiplier AND its source in a single pass,
+ * avoiding duplicate localStorage reads.
+ */
+function resolveXPMultiplier(): { multiplier: number; source: XPMultiplierSource } {
+  if (new Date().getDay() === 6) return { multiplier: 2, source: "saturday" };
+
   try {
-    const buff = JSON.parse(localStorage.getItem("davar-xp-buff") || "null");
-    if (buff && new Date(buff.expiresAt) > new Date()) return "mystery-buff";
-  } catch {}
-  try {
-    const mrState = JSON.parse(
-      localStorage.getItem("davar-mystery-rewards") || "null"
-    );
-    if (mrState && mrState.xpMultiplierExpires === getToday() && mrState.xpMultiplier > 1) {
-      return "mystery-reward";
+    const buff = JSON.parse(localStorage.getItem(SK_XP_BUFF) || "null");
+    if (buff && new Date(buff.expiresAt) > new Date()) {
+      return { multiplier: buff.multiplier, source: "mystery-buff" };
     }
-  } catch {}
-  return null;
+  } catch { /* ignore malformed data */ }
+
+  try {
+    const mrState = JSON.parse(localStorage.getItem(SK_MYSTERY_REWARDS) || "null");
+    if (mrState && mrState.xpMultiplierExpires === getToday() && mrState.xpMultiplier > 1) {
+      return { multiplier: mrState.xpMultiplier, source: "mystery-reward" };
+    }
+  } catch { /* ignore malformed data */ }
+
+  return { multiplier: 1, source: null };
+}
+
+/** Standalone getter for use outside React (e.g. in awardXP callback). */
+export function getXPMultiplier(): number {
+  return resolveXPMultiplier().multiplier;
 }
 
 /* ── Hook ──────────────────────────────────────────────────── */
 
 export function useXP() {
   const [xpState, setXPState, hydrated] = useLocalStorage<XPState>(
-    "davar-xp",
+    SK_XP,
     DEFAULT_XP_STATE
   );
 
@@ -127,9 +104,12 @@ export function useXP() {
     [xpState.totalXP]
   );
 
-  /** Current active XP multiplier (reactive-ish: recalculated on each render) */
-  const activeXPMultiplier = getXPMultiplier();
-  const xpMultiplierSource = getXPMultiplierSource();
+  // Memoize multiplier — recalculates when XP state changes (good proxy for user activity)
+  const { multiplier: activeXPMultiplier, source: xpMultiplierSource } = useMemo(
+    () => resolveXPMultiplier(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [xpState.totalXP]
+  );
 
   return {
     totalXP: xpState.totalXP,

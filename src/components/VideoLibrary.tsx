@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import type { AppMode } from "@/types";
+import { SK_VIDEOS_WATCHED } from "@/lib/storage-keys";
 
 /* ── Types ──────────────────────────────────────────────────── */
 
@@ -207,7 +208,7 @@ const LEVEL_BADGE_CLASSES: Record<string, string> = {
   B1: "bg-accent-blue/15 text-accent-blue",
 };
 
-const STORAGE_KEY = "davar-videos-watched";
+const STORAGE_KEY = SK_VIDEOS_WATCHED;
 
 /* ── Helpers ────────────────────────────────────────────────── */
 

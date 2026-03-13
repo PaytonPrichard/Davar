@@ -4,6 +4,7 @@ import { useMemo, useEffect } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useXP } from "@/hooks/useXP";
 import { cn } from "@/lib/utils";
+import { SK_LEAGUE } from "@/lib/storage-keys";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -155,7 +156,7 @@ const DEFAULT_STATE: LeagueState = {
 export default function WeeklyLeague() {
   const { todayXP } = useXP();
   const [state, setState, hydrated] = useLocalStorage<LeagueState>(
-    "davar-league",
+    SK_LEAGUE,
     DEFAULT_STATE
   );
 

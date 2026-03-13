@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { cn } from "@/lib/utils";
 
 interface LevelBadgeProps {
@@ -9,7 +9,7 @@ interface LevelBadgeProps {
   totalXP: number;
 }
 
-export default function LevelBadge({
+export default memo(function LevelBadge({
   level,
   xpProgress,
   totalXP,
@@ -81,4 +81,4 @@ export default function LevelBadge({
       )}
     </div>
   );
-}
+})

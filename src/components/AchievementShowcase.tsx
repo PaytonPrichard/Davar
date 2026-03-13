@@ -6,11 +6,12 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ACHIEVEMENTS } from "@/data/achievements";
 import type { Achievement } from "@/types";
 import { cn } from "@/lib/utils";
+import { SK_ACHIEVEMENT_SHOWCASE } from "@/lib/storage-keys";
 
 export default function AchievementShowcase() {
   const { state } = useAchievements();
   const [showcaseIds, setShowcaseIds] = useLocalStorage<string[]>(
-    "davar-achievement-showcase",
+    SK_ACHIEVEMENT_SHOWCASE,
     []
   );
   const [editing, setEditing] = useState(false);

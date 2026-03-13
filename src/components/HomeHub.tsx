@@ -14,6 +14,7 @@ import WordOfTheDay from "./WordOfTheDay";
 import ProficiencyCard from "./ProficiencyCard";
 import AchievementShowcase from "./AchievementShowcase";
 import MistakeJournal from "./MistakeJournal";
+import { SK_LEAGUE, SK_DAILY_CHALLENGE, SK_CUSTOM_WORDS } from "@/lib/storage-keys";
 
 /* ── Types ──────────────────────────────────────────────────── */
 
@@ -43,7 +44,7 @@ export default function HomeHub({ onNavigate }: HomeHubProps) {
   // League data
   const leagueData = useMemo(() => {
     try {
-      const raw = localStorage.getItem("davar-league");
+      const raw = localStorage.getItem(SK_LEAGUE);
       if (raw) {
         const d = JSON.parse(raw);
         return { tier: d.tier as string, rank: d.currentRank as number | undefined };
@@ -53,7 +54,7 @@ export default function HomeHub({ onNavigate }: HomeHubProps) {
   }, []);
 
   // Custom words count
-  const [customWords] = useLocalStorage<{ id: string }[]>("davar-custom-words", []);
+  const [customWords] = useLocalStorage<{ id: string }[]>(SK_CUSTOM_WORDS, []);
 
   // Garden stats
   const gardenStats = useMemo(() => {
@@ -77,7 +78,7 @@ export default function HomeHub({ onNavigate }: HomeHubProps) {
   // Daily challenge status
   const dailyChallengeComplete = useMemo(() => {
     try {
-      const raw = localStorage.getItem("davar-daily-challenge");
+      const raw = localStorage.getItem(SK_DAILY_CHALLENGE);
       if (raw) {
         const d = JSON.parse(raw);
         const today = new Date().toISOString().split("T")[0];

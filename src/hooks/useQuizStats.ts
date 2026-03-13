@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { SK_QUIZ_STATS } from "@/lib/storage-keys";
 
 export interface QuizStats {
   quizzesTaken: number;
@@ -21,7 +22,7 @@ const DEFAULT_STATS: QuizStats = {
 
 export function useQuizStats() {
   const [stats, setStats, hydrated] = useLocalStorage<QuizStats>(
-    "davar-quiz-stats",
+    SK_QUIZ_STATS,
     DEFAULT_STATS
   );
 

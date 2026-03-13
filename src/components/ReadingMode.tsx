@@ -11,6 +11,7 @@ import Flashcard from "./Flashcard";
 import { cn, stripNikud } from "@/lib/utils";
 import { trackQuest } from "@/hooks/useQuests";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { SK_COMPLETED_LINES, SK_LESSON_STEP } from "@/lib/storage-keys";
 import { useVocabulary } from "@/hooks/useVocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { useStreak } from "@/hooks/useStreak";
@@ -40,11 +41,11 @@ export default function ReadingMode({ navigateToPassageId, onPassageConsumed }: 
   const [showNikud, setShowNikud] = useState(true);
   const [expandedLine, setExpandedLine] = useState<number | null>(null);
   const [completedLines, setCompletedLines, hydrated] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-lines",
+    SK_COMPLETED_LINES,
     {}
   );
   const [lessonSteps, setLessonSteps] = useLocalStorage<Record<string, LessonStep>>(
-    "davar-lesson-step",
+    SK_LESSON_STEP,
     {}
   );
   const didAutoSelect = useRef(false);

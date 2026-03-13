@@ -4,6 +4,7 @@ import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { Word, CardState, CATEGORIES } from "@/types";
 import { isWordMastered } from "@/lib/fsrs";
+import { SK_PRESTIGE } from "@/lib/storage-keys";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -36,7 +37,7 @@ const MAX_PRESTIGE = 3;
 
 export function usePrestige() {
   const [state, setState, hydrated] = useLocalStorage<PrestigeState>(
-    "davar-prestige",
+    SK_PRESTIGE,
     DEFAULT_STATE
   );
 

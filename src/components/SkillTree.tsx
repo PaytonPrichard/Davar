@@ -5,6 +5,7 @@ import { AppMode } from "@/types";
 import { useVocabulary } from "@/hooks/useVocabulary";
 import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { SK_COMPLETED_LINES } from "@/lib/storage-keys";
 import { useXP } from "@/hooks/useXP";
 import { isWordMastered } from "@/lib/sm2";
 import { PASSAGES } from "@/data/passages";
@@ -147,7 +148,7 @@ export default function SkillTree({ onNavigate }: SkillTreeProps) {
   const { level: xpLevel } = useXP();
 
   const [completedLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-lines",
+    SK_COMPLETED_LINES,
     {}
   );
 

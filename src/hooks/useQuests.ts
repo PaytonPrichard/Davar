@@ -3,6 +3,7 @@
 import { useMemo, useCallback, useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { getToday } from "@/lib/utils";
+import { SK_QUEST_STATS, SK_QUESTS, SK_QUESTS_UPDATED } from "@/lib/storage-keys";
 
 /* ── Types ────────────────────────────────────────────── */
 
@@ -139,7 +140,7 @@ function pickQuestsForDate(date: string): Quest[] {
 
 /* ── Quest stats for achievements ─────────────────────── */
 
-const QUEST_STATS_KEY = "davar-quest-stats";
+const QUEST_STATS_KEY = SK_QUEST_STATS;
 
 interface QuestStats {
   questsComplete: number;
@@ -197,7 +198,7 @@ function recordQuestDailyAllComplete(): void {
 
 /* ── Standalone tracking function ─────────────────────── */
 
-const STORAGE_KEY = "davar-quests";
+const STORAGE_KEY = SK_QUESTS;
 
 function readStorage(): QuestsStorage | null {
   if (typeof window === "undefined") return null;
@@ -258,7 +259,7 @@ export function trackQuest(questId: string, amount = 1): void {
   }
 
   // Dispatch a custom event so the hook re-reads
-  window.dispatchEvent(new Event("davar-quests-updated"));
+  window.dispatchEvent(new Event(SK_QUESTS_UPDATED));
 }
 
 /* ── Default state ────────────────────────────────────── */
@@ -304,8 +305,8 @@ export function useQuests(): UseQuestsReturn {
         setStored(fresh);
       }
     };
-    window.addEventListener("davar-quests-updated", handler);
-    return () => window.removeEventListener("davar-quests-updated", handler);
+    window.addEventListener(SK_QUESTS_UPDATED, handler);
+    return () => window.removeEventListener(SK_QUESTS_UPDATED, handler);
   }, [today, setStored]);
 
   const quests = data.quests;

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SK_CONSENT } from "@/lib/storage-keys";
 
-const CONSENT_KEY = "davar-consent-accepted";
+const CONSENT_KEY = SK_CONSENT;
 
 export default function ConsentBanner() {
   const [visible, setVisible] = useState(false);

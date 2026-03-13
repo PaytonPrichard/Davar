@@ -10,6 +10,7 @@ import { useQuizStats } from "@/hooks/useQuizStats";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { PASSAGES } from "@/data/passages";
 import { cn } from "@/lib/utils";
+import { SK_LEAGUE, SK_GARDEN_WATER_STREAK, SK_SENTENCES_BUILT, SK_QUEST_STATS, SK_COMPLETED_LINES } from "@/lib/storage-keys";
 
 export default function AchievementsPanel() {
   const { allWords } = useVocabulary();
@@ -21,7 +22,7 @@ export default function AchievementsPanel() {
     useAchievements();
 
   const [completedLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-lines",
+    SK_COMPLETED_LINES,
     {}
   );
 
@@ -39,60 +40,26 @@ export default function AchievementsPanel() {
     }).length;
   }, [cardStates]);
 
-  // Read league stats from localStorage for league achievements
-  const leagueStats = useMemo(() => {
-    try {
-      const raw = typeof window !== "undefined" ? localStorage.getItem("davar-league") : null;
-      if (!raw) return { tier: "bronze", totalPromotions: 0, bestRank: 0 };
-      const data = JSON.parse(raw);
-      return {
-        tier: data.tier ?? "bronze",
-        totalPromotions: data.totalPromotions ?? 0,
-        bestRank: data.bestRank ?? 0,
-      };
-    } catch {
-      return { tier: "bronze", totalPromotions: 0, bestRank: 0 };
-    }
-  }, [totalXP]); // Re-check when XP changes (proxy for league activity)
+  // Use useLocalStorage so these update reactively when any tab writes to them
+  const [leagueRaw] = useLocalStorage<Record<string, unknown>>(SK_LEAGUE, {});
+  const leagueStats = useMemo(() => ({
+    tier: (leagueRaw.tier as string) ?? "bronze",
+    totalPromotions: (leagueRaw.totalPromotions as number) ?? 0,
+    bestRank: (leagueRaw.bestRank as number) ?? 0,
+  }), [leagueRaw]);
 
-  // Read garden watering streak from localStorage
-  const gardenWaterStreak = useMemo(() => {
-    try {
-      const raw = typeof window !== "undefined" ? localStorage.getItem("davar-garden-water-streak") : null;
-      if (!raw) return 0;
-      const data = JSON.parse(raw);
-      return data.streak ?? 0;
-    } catch {
-      return 0;
-    }
-  }, [cardStates]); // Re-check when card states change (proxy for watering)
+  const [waterStreakRaw] = useLocalStorage<{ streak?: number }>(SK_GARDEN_WATER_STREAK, {});
+  const gardenWaterStreak = waterStreakRaw.streak ?? 0;
 
-  // Read sentences built count from localStorage
-  const sentencesBuilt = useMemo(() => {
-    try {
-      const raw = typeof window !== "undefined" ? localStorage.getItem("davar-sentences-built") : null;
-      if (!raw) return 0;
-      return parseInt(raw, 10) || 0;
-    } catch {
-      return 0;
-    }
-  }, [todayXP]); // Re-check when daily XP changes (proxy for sentence activity)
+  const [sentencesBuiltRaw] = useLocalStorage<number>(SK_SENTENCES_BUILT, 0);
+  const sentencesBuilt = sentencesBuiltRaw ?? 0;
 
-  // Read quest stats from localStorage
-  const questStats = useMemo(() => {
-    try {
-      const raw = typeof window !== "undefined" ? localStorage.getItem("davar-quest-stats") : null;
-      if (!raw) return { questsComplete: 0, questDailyAllComplete: 0, questStreak: 0 };
-      const data = JSON.parse(raw);
-      return {
-        questsComplete: data.questsComplete ?? 0,
-        questDailyAllComplete: data.questDailyAllComplete ?? 0,
-        questStreak: data.questStreak ?? 0,
-      };
-    } catch {
-      return { questsComplete: 0, questDailyAllComplete: 0, questStreak: 0 };
-    }
-  }, [todayXP]); // Re-check when daily XP changes (proxy for quest activity)
+  const [questStatsRaw] = useLocalStorage<Record<string, number>>(SK_QUEST_STATS, {});
+  const questStats = useMemo(() => ({
+    questsComplete: questStatsRaw.questsComplete ?? 0,
+    questDailyAllComplete: questStatsRaw.questDailyAllComplete ?? 0,
+    questStreak: questStatsRaw.questStreak ?? 0,
+  }), [questStatsRaw]);
 
   const ctx = useMemo(
     () => ({

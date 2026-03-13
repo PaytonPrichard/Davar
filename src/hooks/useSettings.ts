@@ -2,10 +2,11 @@
 
 import { useLocalStorage } from "./useLocalStorage";
 import { AppSettings, DEFAULT_SETTINGS } from "@/types";
+import { SK_SETTINGS } from "@/lib/storage-keys";
 
 export function useSettings() {
   const [settings, setSettings, hydrated] = useLocalStorage<AppSettings>(
-    "davar-settings",
+    SK_SETTINGS,
     DEFAULT_SETTINGS
   );
 

@@ -3,6 +3,7 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { getToday, getYesterday, daysBetween } from "@/lib/utils";
+import { SK_STREAK } from "@/lib/storage-keys";
 
 interface StreakData {
   current: number;
@@ -33,7 +34,7 @@ function getDayBefore(dateStr: string): string {
 
 export function useStreak() {
   const [streak, setStreak, hydrated] = useLocalStorage<StreakData>(
-    "davar-streak",
+    SK_STREAK,
     DEFAULT_STREAK
   );
 

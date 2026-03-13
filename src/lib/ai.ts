@@ -6,10 +6,11 @@
  */
 
 import { AppSettings } from "@/types";
+import { SK_AI_CONSENT } from "@/lib/storage-keys";
 
 /* ── AI consent helpers ───────────────────────────────────── */
 
-const AI_CONSENT_KEY = "davar-ai-consent-accepted";
+const AI_CONSENT_KEY = SK_AI_CONSENT;
 
 export function hasAIConsent(): boolean {
   try {

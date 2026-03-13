@@ -9,10 +9,10 @@ import { CardState, Word, AppMode } from "@/types";
 import { cn } from "@/lib/utils";
 import { trackQuest } from "@/hooks/useQuests";
 import AudioButton from "./AudioButton";
+import { SK_GARDEN_WATER_STREAK } from "@/lib/storage-keys";
 
 /* ── Garden watering streak tracker ─────────────────── */
 
-const GARDEN_WATER_KEY = "davar-garden-water-streak";
 
 interface GardenWaterData {
   lastWaterDate: string;
@@ -23,7 +23,7 @@ function recordGardenWater(): void {
   if (typeof window === "undefined") return;
   const today = new Date().toISOString().split("T")[0];
   try {
-    const raw = localStorage.getItem(GARDEN_WATER_KEY);
+    const raw = localStorage.getItem(SK_GARDEN_WATER_STREAK);
     const data: GardenWaterData = raw ? JSON.parse(raw) : { lastWaterDate: "", streak: 0 };
 
     if (data.lastWaterDate === today) return; // Already watered today
@@ -35,7 +35,7 @@ function recordGardenWater(): void {
 
     const newStreak = data.lastWaterDate === yesterdayStr ? data.streak + 1 : 1;
     localStorage.setItem(
-      GARDEN_WATER_KEY,
+      SK_GARDEN_WATER_STREAK,
       JSON.stringify({ lastWaterDate: today, streak: newStreak })
     );
   } catch {

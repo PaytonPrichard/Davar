@@ -7,27 +7,7 @@ import { useSettings } from "@/hooks/useSettings";
 import { useLocalStorage, getStorageUsage } from "@/hooks/useLocalStorage";
 import { PlacementResult } from "./PlacementTest";
 import AccountPanel from "./AccountPanel";
-
-/* ── Helpers ─────────────────────────────────────────────────── */
-
-const DAVAR_PREFIX = "davar-";
-
-function getAllDavarData(): Record<string, unknown> {
-  const data: Record<string, unknown> = {};
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith(DAVAR_PREFIX)) {
-        try {
-          data[key] = JSON.parse(localStorage.getItem(key) ?? "null");
-        } catch {
-          data[key] = localStorage.getItem(key);
-        }
-      }
-    }
-  } catch {}
-  return data;
-}
+import { getAllDavarData, STORAGE_PREFIX, SK_PLACEMENT } from "@/lib/storage-keys";
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -193,7 +173,7 @@ export default function SettingsPanel() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const [placementResult, setPlacementResult] =
-    useLocalStorage<PlacementResult | null>("davar-placement", null);
+    useLocalStorage<PlacementResult | null>(SK_PLACEMENT, null);
 
   const storageInfo = useMemo(() => {
     if (typeof window === "undefined") return { used: 0, keys: 0 };
@@ -300,7 +280,7 @@ export default function SettingsPanel() {
         }
 
         const keys = Object.keys(data);
-        const davarKeys = keys.filter((k) => k.startsWith(DAVAR_PREFIX));
+        const davarKeys = keys.filter((k) => k.startsWith(STORAGE_PREFIX));
         if (davarKeys.length === 0) {
           setDataMessage({
             type: "error",
@@ -361,7 +341,7 @@ export default function SettingsPanel() {
       const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key?.startsWith(DAVAR_PREFIX)) {
+        if (key?.startsWith(STORAGE_PREFIX)) {
           keysToRemove.push(key);
         }
       }

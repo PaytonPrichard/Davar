@@ -4,14 +4,15 @@ import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { CardState, ReviewQuality, Word } from "@/types";
 import { calculateReview, createCardState, getDueCards, isWordMastered } from "@/lib/fsrs";
+import { SK_CARD_STATES, SK_TOTAL_REVIEWS } from "@/lib/storage-keys";
 
 export function useSpacedRepetition(words: Word[]) {
   const [cardStates, setCardStates, hydrated] = useLocalStorage<
     Record<string, CardState>
-  >("davar-card-states", {});
+  >(SK_CARD_STATES, {});
 
   const [totalReviews, setTotalReviews] = useLocalStorage<number>(
-    "davar-total-reviews",
+    SK_TOTAL_REVIEWS,
     0
   );
 

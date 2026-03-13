@@ -6,6 +6,7 @@ import AudioButton from "./AudioButton";
 import ClickableHebrewLine from "./ClickableHebrewLine";
 import { cn, stripNikud } from "@/lib/utils";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { SK_COMPLETED_PRAYER_LINES } from "@/lib/storage-keys";
 
 const dailyPrayers = PRAYERS.filter((p) => p.level === "beginner");
 const shabbatPrayers = PRAYERS.filter((p) => p.level === "intermediate");
@@ -16,7 +17,7 @@ export default function PrayerMode() {
   const [showTransliteration, setShowTransliteration] = useState(false);
   const [showNikud, setShowNikud] = useState(true);
   const [completedLines, setCompletedLines] = useLocalStorage<Record<string, number[]>>(
-    "davar-completed-prayer-lines",
+    SK_COMPLETED_PRAYER_LINES,
     {}
   );
 
