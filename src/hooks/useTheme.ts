@@ -9,11 +9,11 @@ function getThemeSnapshot(): Theme {
     const stored = localStorage.getItem("davar-theme");
     if (stored === "light" || stored === "dark") return stored;
   } catch {}
-  return "dark";
+  return "light";
 }
 
 function getServerSnapshot(): Theme {
-  return "dark";
+  return "light";
 }
 
 function subscribe(callback: () => void): () => void {

@@ -4,8 +4,8 @@
   "description": "Interactive Hebrew learning app with flashcards, spaced repetition, reading practice, and quizzes.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a2e",
-  "theme_color": "#e94560",
+  "background_color": "#f7f7f2",
+  "theme_color": "#58cc02",
   "orientation": "portrait-primary",
   "categories": ["education", "lifestyle"],
   "icons": [

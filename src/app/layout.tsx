@@ -42,7 +42,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#e94560",
+  themeColor: "#58cc02",
 };
 
 export default function RootLayout({
@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" dir="ltr" data-theme="light" suppressHydrationWarning>
       <body className={`${dmSans.variable} ${frankRuhl.variable} antialiased`}>
         {children}
         <script
