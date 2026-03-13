@@ -8,8 +8,7 @@ import { useXP } from "@/hooks/useXP";
 import HydrationGuard from "./HydrationGuard";
 import ErrorBoundary from "./ErrorBoundary";
 import FlashcardMode from "./FlashcardMode";
-import ProgressDashboard from "./ProgressDashboard";
-import WordSpotlight from "./WordSpotlight";
+import HomeHub from "./HomeHub";
 import SettingsPanel from "./SettingsPanel";
 import SearchBar from "./SearchBar";
 import ThemeToggle from "./ThemeToggle";
@@ -66,16 +65,8 @@ const PRIMARY_TABS: PrimaryTab[] = [
         <polyline points="9 22 9 12 15 12 15 22" />
       </svg>
     ),
-    defaultMode: "progress",
-    subs: [
-      { mode: "progress", label: "Dashboard" },
-      { mode: "daily-challenge", label: "Daily" },
-      { mode: "skilltree", label: "Skill Path" },
-      { mode: "garden", label: "Garden" },
-      { mode: "collection", label: "Collection" },
-      { mode: "league", label: "League" },
-      { mode: "custom", label: "My Words" },
-    ],
+    defaultMode: "home",
+    subs: [],
   },
   {
     group: "learn",
@@ -131,7 +122,11 @@ const PRIMARY_TABS: PrimaryTab[] = [
 ];
 
 /* ── Find which group a mode belongs to ─────────────────────── */
+
+const HOME_MODES = new Set<AppMode>(["home", "progress", "daily-challenge", "skilltree", "garden", "collection", "league", "custom"]);
+
 function getGroup(mode: AppMode): TabGroup {
+  if (HOME_MODES.has(mode)) return "home";
   for (const tab of PRIMARY_TABS) {
     if (tab.subs.some((s) => s.mode === mode)) return tab.group;
   }
@@ -141,7 +136,7 @@ function getGroup(mode: AppMode): TabGroup {
 /* ── AppShell ────────────────────────────────────────────────── */
 
 export default function AppShell() {
-  const [mode, setMode] = useState<AppMode>("progress");
+  const [mode, setMode] = useState<AppMode>("home");
   const [passageId, setPassageId] = useState<string | undefined>();
   const { streak, hydrated } = useStreak();
   const { level: xpLevel, totalXP, xpProgress, todayXP } = useXP();
@@ -364,17 +359,7 @@ export default function AppShell() {
           {/* ── Main content ─────────────────────────────────── */}
           <main className="max-w-5xl mx-auto px-4 py-6">
             {/* Home group */}
-            {mode === "progress" && (
-              <>
-                <WordSpotlight />
-                <div className="mt-6" />
-                <ProgressDashboard onNavigate={navigateTo} />
-                {/* Quick-access cards */}
-                <div className="mt-6">
-                  <QuickActions onNavigate={navigateTo} />
-                </div>
-              </>
-            )}
+            {mode === "home" && <HomeHub onNavigate={navigateTo} />}
             {mode === "skilltree" && <SkillTree onNavigate={navigateTo} />}
             {mode === "custom" && <CustomWordsManager />}
             {mode === "daily-challenge" && <DailyChallenge />}
@@ -412,46 +397,13 @@ export default function AppShell() {
             {mode === "prayers" && <PrayerMode />}
 
             {/* Cross-mode suggestions (shown at bottom) */}
-            {mode !== "progress" && (
+            {mode !== "home" && !HOME_MODES.has(mode) && (
               <CrossModeSuggestions currentMode={mode} onNavigate={navigateTo} />
             )}
           </main>
         </div>
       </ErrorBoundary>
     </HydrationGuard>
-  );
-}
-
-/* ── Quick-action cards for home page ────────────────────────── */
-
-function QuickActions({ onNavigate }: { onNavigate: (mode: AppMode) => void }) {
-  const actions: { mode: AppMode; label: string; desc: string; border: string; bg: string; hover: string; text: string }[] = [
-    { mode: "daily-challenge", label: "Daily Challenge", desc: "Today's Hebrew puzzle", border: "border-purple-500/20", bg: "bg-purple-500/5", hover: "hover:bg-purple-500/10", text: "text-purple-400" },
-    { mode: "flashcards", label: "Review Cards", desc: "Practice due vocabulary", border: "border-accent/20", bg: "bg-accent/5", hover: "hover:bg-accent/10", text: "text-accent" },
-    { mode: "reading", label: "Read", desc: "Hebrew passages", border: "border-accent-blue/20", bg: "bg-accent-blue/5", hover: "hover:bg-accent-blue/10", text: "text-accent-blue" },
-    { mode: "quiz", label: "Quiz", desc: "Test yourself", border: "border-accent-yellow/20", bg: "bg-accent-yellow/5", hover: "hover:bg-accent-yellow/10", text: "text-accent-yellow" },
-  ];
-
-  return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      {actions.map((a) => (
-        <button
-          key={a.mode}
-          onClick={() => onNavigate(a.mode)}
-          className={cn(
-            "p-4 rounded-xl border text-left transition-all hover:scale-[1.02]",
-            a.border, a.bg, a.hover
-          )}
-        >
-          <span className={cn("text-sm font-semibold", a.text)}>
-            {a.label}
-          </span>
-          <span className="block text-xs text-text-muted mt-0.5">
-            {a.desc}
-          </span>
-        </button>
-      ))}
-    </div>
   );
 }
 

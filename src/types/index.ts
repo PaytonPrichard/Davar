@@ -77,7 +77,8 @@ export type AppMode =
   | "story"
   | "collection"
   | "league"
-  | "sentences";
+  | "sentences"
+  | "home";
 
 export interface FuzzyMatchResult {
   status: "correct" | "close" | "incorrect";
