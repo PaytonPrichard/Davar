@@ -10,6 +10,10 @@ import { useSpacedRepetition } from "@/hooks/useSpacedRepetition";
 import { useQuests } from "@/hooks/useQuests";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import DailyQuests from "./DailyQuests";
+import WordOfTheDay from "./WordOfTheDay";
+import ProficiencyCard from "./ProficiencyCard";
+import AchievementShowcase from "./AchievementShowcase";
+import MistakeJournal from "./MistakeJournal";
 
 /* ── Types ──────────────────────────────────────────────────── */
 
@@ -246,8 +250,17 @@ export default function HomeHub({ onNavigate }: HomeHubProps) {
         </div>
       </div>
 
+      {/* ── Word of the Day ──────────────────────────── */}
+      <WordOfTheDay onNavigate={onNavigate} />
+
       {/* ── Daily Quests ───────────────────────────────── */}
       <DailyQuests />
+
+      {/* ── Proficiency ───────────────────────────────── */}
+      <ProficiencyCard onNavigate={onNavigate} />
+
+      {/* ── Achievement Showcase ──────────────────────── */}
+      <AchievementShowcase />
 
       {/* ── Activity Grid ──────────────────────────────── */}
       <div>
@@ -300,6 +313,8 @@ export default function HomeHub({ onNavigate }: HomeHubProps) {
           ))}
         </div>
       </div>
+      {/* ── Mistake Journal ──────────────────────────── */}
+      <MistakeJournal onNavigate={onNavigate} />
     </div>
   );
 }

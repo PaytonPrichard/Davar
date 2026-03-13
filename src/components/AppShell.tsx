@@ -37,6 +37,12 @@ const StoryMode = dynamic(() => import("./StoryMode"));
 const WordCollection = dynamic(() => import("./WordCollection"));
 const WeeklyLeague = dynamic(() => import("./WeeklyLeague"));
 const SentenceBuilderMode = dynamic(() => import("./SentenceBuilderMode"));
+const SpeakingMode = dynamic(() => import("./SpeakingMode"));
+const VideoLibrary = dynamic(() => import("./VideoLibrary"));
+const LearnHub = dynamic(() => import("./LearnHub"));
+const PracticeHub = dynamic(() => import("./PracticeHub"));
+const ReadHub = dynamic(() => import("./ReadHub"));
+const OfflineIndicator = dynamic(() => import("./OfflineIndicator"));
 
 /* ── Tab group definitions ───────────────────────────────────── */
 
@@ -77,13 +83,8 @@ const PRIMARY_TABS: PrimaryTab[] = [
         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
       </svg>
     ),
-    defaultMode: "alphabet",
-    subs: [
-      { mode: "alphabet", label: "Alphabet" },
-      { mode: "writing", label: "Writing" },
-      { mode: "grammar", label: "Grammar" },
-      { mode: "sentences", label: "Sentences" },
-    ],
+    defaultMode: "learn-hub",
+    subs: [],
   },
   {
     group: "practice",
@@ -93,15 +94,8 @@ const PRIMARY_TABS: PrimaryTab[] = [
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),
-    defaultMode: "flashcards",
-    subs: [
-      { mode: "flashcards", label: "Flashcards" },
-      { mode: "quiz", label: "Quiz" },
-      { mode: "listening", label: "Listening" },
-      { mode: "matching", label: "Matching" },
-      { mode: "cloze", label: "Fill-in" },
-      { mode: "conversation", label: "Chat" },
-    ],
+    defaultMode: "practice-hub",
+    subs: [],
   },
   {
     group: "read",
@@ -112,24 +106,23 @@ const PRIMARY_TABS: PrimaryTab[] = [
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       </svg>
     ),
-    defaultMode: "reading",
-    subs: [
-      { mode: "reading", label: "Passages" },
-      { mode: "story", label: "Stories" },
-      { mode: "prayers", label: "Prayers" },
-    ],
+    defaultMode: "read-hub",
+    subs: [],
   },
 ];
 
 /* ── Find which group a mode belongs to ─────────────────────── */
 
 const HOME_MODES = new Set<AppMode>(["home", "progress", "daily-challenge", "skilltree", "garden", "collection", "league", "custom"]);
+const LEARN_MODES = new Set<AppMode>(["learn-hub", "alphabet", "writing", "grammar", "sentences", "speaking"]);
+const PRACTICE_MODES = new Set<AppMode>(["practice-hub", "flashcards", "quiz", "listening", "matching", "cloze", "conversation"]);
+const READ_MODES = new Set<AppMode>(["read-hub", "reading", "story", "prayers", "videos"]);
 
 function getGroup(mode: AppMode): TabGroup {
   if (HOME_MODES.has(mode)) return "home";
-  for (const tab of PRIMARY_TABS) {
-    if (tab.subs.some((s) => s.mode === mode)) return tab.group;
-  }
+  if (LEARN_MODES.has(mode)) return "learn";
+  if (PRACTICE_MODES.has(mode)) return "practice";
+  if (READ_MODES.has(mode)) return "read";
   return "home";
 }
 
@@ -228,6 +221,7 @@ export default function AppShell() {
     <HydrationGuard>
       <ErrorBoundary>
         <div className="min-h-screen bg-bg-primary">
+          <OfflineIndicator />
           {/* ── Header ──────────────────────────────────────── */}
           <header className="sticky top-0 z-50 bg-bg-secondary/95 backdrop-blur-sm border-b border-border">
             {/* Top row: logo, search, theme, streak */}
@@ -371,12 +365,15 @@ export default function AppShell() {
             )}
 
             {/* Learn group */}
+            {mode === "learn-hub" && <LearnHub onNavigate={navigateTo} />}
             {mode === "alphabet" && <AlphabetMode />}
             {mode === "writing" && <WritingPractice />}
             {mode === "grammar" && <GrammarMode onNavigate={navigateTo} />}
             {mode === "sentences" && <SentenceBuilderMode onNavigate={navigateTo} />}
+            {mode === "speaking" && <SpeakingMode onNavigate={navigateTo} />}
 
             {/* Practice group */}
+            {mode === "practice-hub" && <PracticeHub onNavigate={navigateTo} />}
             {mode === "flashcards" && (
               <FlashcardMode onNavigate={navigateTo} />
             )}
@@ -387,6 +384,7 @@ export default function AppShell() {
             {mode === "conversation" && <ConversationMode />}
 
             {/* Read group */}
+            {mode === "read-hub" && <ReadHub onNavigate={navigateTo} />}
             {mode === "reading" && (
               <ReadingMode
                 navigateToPassageId={passageId}
@@ -395,6 +393,7 @@ export default function AppShell() {
             )}
             {mode === "story" && <StoryMode />}
             {mode === "prayers" && <PrayerMode />}
+            {mode === "videos" && <VideoLibrary onNavigate={navigateTo} />}
 
             {/* Cross-mode suggestions (shown at bottom) */}
             {mode !== "home" && !HOME_MODES.has(mode) && (
@@ -485,6 +484,14 @@ function CrossModeSuggestions({
     league: [
       { label: "Earn more XP", mode: "flashcards", desc: "Climb the leaderboard" },
       { label: "Daily challenge", mode: "daily-challenge", desc: "Quick XP boost" },
+    ],
+    speaking: [
+      { label: "Review vocabulary", mode: "flashcards", desc: "Strengthen the words you spoke" },
+      { label: "Try listening", mode: "listening", desc: "Test your comprehension" },
+    ],
+    videos: [
+      { label: "Read passages", mode: "reading", desc: "Practice reading Hebrew text" },
+      { label: "Try conversation", mode: "conversation", desc: "Chat in Hebrew" },
     ],
   };
 

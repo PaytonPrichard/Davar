@@ -78,7 +78,12 @@ export type AppMode =
   | "collection"
   | "league"
   | "sentences"
-  | "home";
+  | "home"
+  | "speaking"
+  | "videos"
+  | "learn-hub"
+  | "practice-hub"
+  | "read-hub";
 
 export interface FuzzyMatchResult {
   status: "correct" | "close" | "incorrect";
@@ -106,7 +111,8 @@ export type XPAction =
   | "daily_challenge_perfect"
   | "garden_water"
   | "quest_bonus"
-  | "sentence_correct";
+  | "sentence_correct"
+  | "speaking_correct";
 
 export const XP_VALUES: Record<XPAction, number> = {
   flashcard_review: 5,
@@ -128,6 +134,7 @@ export const XP_VALUES: Record<XPAction, number> = {
   garden_water: 15,
   quest_bonus: 25,
   sentence_correct: 10,
+  speaking_correct: 10,
 };
 
 export interface XPState {

@@ -10,6 +10,7 @@ import AIConsentDialog from "./AIConsentDialog";
 import AudioButton from "./AudioButton";
 import { cn, shuffle } from "@/lib/utils";
 import { AppMode } from "@/types";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 type GrammarTab = "conjugation" | "practice" | "trainer" | "adjectives" | "lessons";
 
@@ -117,6 +118,7 @@ export default function GrammarMode({ onNavigate }: { onNavigate?: (mode: AppMod
   const [selectedPattern, setSelectedPattern] = useState(0);
   const [selectedTense, setSelectedTense] = useState<"past" | "present" | "future">("past");
   const [expandedLesson, setExpandedLesson] = useState<string | null>(null);
+  const [completedLessons, setCompletedLessons] = useLocalStorage<string[]>("davar-grammar-completed", []);
 
   // Practice mode state
   const [practiceAnswer, setPracticeAnswer] = useState("");
@@ -756,15 +758,20 @@ export default function GrammarMode({ onNavigate }: { onNavigate?: (mode: AppMod
               className="bg-bg-card rounded-2xl border border-border overflow-hidden"
             >
               <button
-                onClick={() =>
-                  setExpandedLesson((prev) =>
-                    prev === lesson.id ? null : lesson.id
-                  )
-                }
+                onClick={() => {
+                  const next = expandedLesson === lesson.id ? null : lesson.id;
+                  setExpandedLesson(next);
+                  if (next && !completedLessons.includes(lesson.id)) {
+                    setCompletedLessons([...completedLessons, lesson.id]);
+                  }
+                }}
                 className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-bg-card-hover transition-colors"
               >
                 <div>
                   <div className="flex items-center gap-2">
+                    {completedLessons.includes(lesson.id) && (
+                      <span className="text-accent-green text-sm">&#10003;</span>
+                    )}
                     <h4 className="text-text-primary font-medium">
                       {lesson.title}
                     </h4>
